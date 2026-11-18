@@ -340,8 +340,7 @@ body.case-full .topbar,body.case-full #labels,body.case-full .hint,body.case-ful
 @media (prefers-reduced-motion:reduce){.tl:after{transform:none}.tl-dot{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}.tl b{opacity:1;transform:none}}
 .beyond{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;position:relative}
 .beyond .bt{will-change:transform;box-shadow:0 14px 30px rgba(30,24,16,.22)}
-.bt{position:relative;margin:0;border-radius:16px;overflow:hidden;grid-column:span 2;aspect-ratio:4/5;display:grid;place-items:center;color:rgba(255,255,255,.9);cursor:default;outline:none}
-.bt:nth-child(n+4){grid-column:span 3;aspect-ratio:16/10}
+.bt{position:relative;margin:0;border-radius:16px;overflow:hidden;grid-column:span 3;aspect-ratio:16/10;display:grid;place-items:center;color:rgba(255,255,255,.9);cursor:default;outline:none}
 .bt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .bt-ic{width:30%;max-width:64px;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
 .bt figcaption{position:absolute;inset:auto 0 0 0;padding:40px 14px 12px;background:linear-gradient(180deg,transparent,rgba(15,12,8,.72));color:#fff;font-family:Fraunces,serif;font-size:20px;font-weight:600;transform:translateY(100%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .35s}
@@ -351,8 +350,7 @@ body.case-full .topbar,body.case-full #labels,body.case-full .hint,body.case-ful
 @media (hover:none){.bt figcaption{transform:none;opacity:1}}
 @media (max-width:760px){
   .beyond{grid-template-columns:1fr 1fr}
-  .bt,.bt:nth-child(n+4){grid-column:span 1;aspect-ratio:1}
-  .bt:last-child{grid-column:span 2;aspect-ratio:2/1}
+  .bt{grid-column:span 1;aspect-ratio:1}
 }
 .facts2{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:14px}
 .facts2 div{background:#fffdf9;padding:13px 14px}
@@ -1571,7 +1569,7 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
 <header class="topbar">
   <div class="navbar">
     <button class="logo" id="logo" aria-label="Paridhi — back to the room"><span class="mark" title="Available — online"><img src="media/paridhi.jpg" alt=""></span><span class="word"><b>Paridhi</b><small>UX &amp; Product Designer</small></span></button>
-    <nav class="nav" aria-label="Sections"><button data-visit="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>About</span></button><button data-visit="laptop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span>Work</span></button><button data-visit="notebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M6 3v18M10 8h5M10 12h5"/></svg><span>Journey</span></button><a class="navlink" href="https://drive.google.com/file/d/1-OBR2_zkcnl4rtb-GFPffGhdcKzgbEOZ/view?usp=drive_link" target="_blank" rel="noopener" data-ext title="Open my resume (PDF) in a new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Resume</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></a><button data-visit="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg><span>Contact</span></button><button class="tour" data-tour><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span>Take a tour</span></button></nav>
+    <nav class="nav" aria-label="Sections"><button data-visit="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>About</span></button><button data-visit="laptop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span>Work</span></button><button data-visit="notebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M6 3v18M10 8h5M10 12h5"/></svg><span>Journey</span></button><a class="navlink" href="https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link" target="_blank" rel="noopener" data-ext title="Open my resume (PDF) in a new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Resume</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></a><button data-visit="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg><span>Contact</span></button><button class="tour" data-tour><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span>Take a tour</span></button></nav>
     <div class="tools">
       <button class="icon-btn" id="photoBtn" title="Photo mode — save a picture of the room" aria-label="Photo mode: save a picture of the room"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg></button>
       <button class="icon-btn" id="soundBtn" aria-pressed="true" title="Sound on — click to mute" aria-label="Click sounds on"></button>
@@ -1579,7 +1577,7 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span class="box"><span class="ln"></span><span class="ln"></span><span class="ln"></span></span></button>
     </div>
   </div>
-  <nav class="mmenu" id="mmenu" aria-label="Menu"><button data-visit="about"><b>About</b></button><button data-visit="laptop"><b>Work</b></button><button data-visit="notebook"><b>Journey</b></button><a href="https://drive.google.com/file/d/1-OBR2_zkcnl4rtb-GFPffGhdcKzgbEOZ/view?usp=drive_link" target="_blank" rel="noopener" data-ext><b>Resume</b><span class="arrow"><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></span></a><button data-visit="phone"><b>Contact</b></button><button class="tour" data-tour><b>Take a tour</b></button></nav>
+  <nav class="mmenu" id="mmenu" aria-label="Menu"><button data-visit="about"><b>About</b></button><button data-visit="laptop"><b>Work</b></button><button data-visit="notebook"><b>Journey</b></button><a href="https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link" target="_blank" rel="noopener" data-ext><b>Resume</b><span class="arrow"><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></span></a><button data-visit="phone"><b>Contact</b></button><button class="tour" data-tour><b>Take a tour</b></button></nav>
 </header>
 
 <div id="labels"></div>
@@ -1622,7 +1620,7 @@ const SITE = {
   // using the email above, paste it here, and host the site anywhere (Netlify, Vercel, GitHub Pages…).
   web3formsKey: '31a35a79-99e1-401e-94a5-3f5abbb85f1b',
   linkedin: 'https://www.linkedin.com/in/paridhi-karmwar',
-  resumePdf: 'https://drive.google.com/file/d/1-OBR2_zkcnl4rtb-GFPffGhdcKzgbEOZ/view?usp=drive_link', // Resume buttons open this
+  resumePdf: 'https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link', // Resume buttons open this
   logos: { email: '', linkedin: '' }, // e.g. 'media/tools/gmail.png' — shown in the chat's links card
   status: 'Open to full-time product design roles',
 };
@@ -2221,7 +2219,6 @@ const ABOUT = {
     { t: 'Chess', photo: '', icon: 'chess', c: ['#5b5f58', '#23261f'] },
     { t: 'Travel', photo: '', icon: 'travel', c: ['#a7b19a', '#5f7356'] },
     { t: 'Boating', photo: '', icon: 'boat', c: ['#9fc0cf', '#3e6577'] },
-    { t: 'Cleaning', photo: '', icon: 'clean', c: ['#e3d6c3', '#b39874'] },
   ],
 };
 
@@ -3065,7 +3062,7 @@ function renderWork() {
       <div class="chips"><span class="chip">${esc(c.type)}</span>${c.year ? `<span class="chip">${esc(c.year)}</span>` : ''}</div>
       <span class="read">Read case study →</span></div>
     </button>`).join('')}</div>
-  <p class="sample-note">Sample projects — replace them with your own in the <code>CASES</code> list at the top of the page code.</p>`;
+`;
 }
 const IPH_STATUS = '<span class="iph-time">9:41</span><span class="iph-icons"><svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8"/><rect x="10" y="3" width="3" height="9" rx=".8"/><rect x="15" y="0" width="3" height="12" rx=".8"/></svg><svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 2.2c2.3 0 4.4.9 6 2.4l1.3-1.4A10.5 10.5 0 0 0 8 .3 10.5 10.5 0 0 0 .7 3.2L2 4.6a8.6 8.6 0 0 1 6-2.4Zm0 3.7c1.3 0 2.5.5 3.4 1.3l1.3-1.4A6.8 6.8 0 0 0 8 4a6.8 6.8 0 0 0-4.7 1.8l1.3 1.4C5.5 6.4 6.7 5.9 8 5.9Zm0 3.6c-.6 0-1.1.2-1.5.6L8 11.7l1.5-1.6c-.4-.4-.9-.6-1.5-.6Z"/></svg><span class="iph-bat"><i></i></span></span>';
 const AP_COLORS = ['#e2621b', '#6a5cd6', '#1f8a7a', '#d0457a', '#c58b12'];
@@ -3401,10 +3398,8 @@ function renderAbout() {
     <div class="skill-cards">${A.skills.map(k => `<span>${esc(k)}</span>`).join('')}</div></section>
   <section class="sec"><div class="eyebrow sec-pill">How I work</div><h2 class="sec-h">My design process</h2>
     <ol class="tl">${A.process.map((p, i) => `<li><span class="tl-dot">${String(i + 1).padStart(2, '0')}</span><b>${esc(p[0])}</b></li>`).join('')}</ol></section>
-  <section class="sec"><div class="eyebrow sec-pill">Beyond the screen</div><h2 class="sec-h">When I’m not designing</h2>
-    <div class="beyond">${A.beyond.map(b => `<figure class="bt" tabindex="0" style="background:linear-gradient(150deg,${b.c[0]},${b.c[1]})">${b.photo ? `<img src="${esc(b.photo)}" alt="${esc(b.t)}" loading="lazy">` : `<svg class="bt-ic" viewBox="0 0 48 48" aria-hidden="true">${BEYOND_ICONS[b.icon] || ''}</svg>`}<figcaption>${esc(b.t)}</figcaption></figure>`).join('')}</div></section>
   <div class="r-cta" style="margin-top:34px"><a class="btn" href="#work" data-go="laptop">See my work</a><a class="btn ghost r-pdf" href="${esc(SITE.resumePdf)}" target="_blank" rel="noopener">Read my resume ${EXT_SVG}</a><a class="btn ghost" href="#contact" data-go="phone">Say hello</a></div>
-  <p class="sample-note">Sample text — edit it in the <code>ABOUT</code> block at the top of the page code.</p>`;
+`;
 }
 const RENDER = { about: renderAbout, laptop: renderWork, notebook: renderJourney, phone: renderContact, poster: renderResume };
 
