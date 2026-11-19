@@ -1464,6 +1464,30 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
 #loader .stage{font-size:11.5px;color:#8d927f;margin-top:12px;min-height:16px;font-weight:600}
 #err{display:none;margin-top:18px;font-size:13px;color:#e9b3a0;max-width:300px;line-height:1.5}
 
+
+/* simple phone home (no 3D): phones get a fast, clean start screen; ?room opens the 3D room anyway */
+#home2d{display:none}
+body.room2d #scene,body.room2d .vignette,body.room2d .grain,body.room2d #photoBtn,body.room2d #dayNight,body.room2d [data-tour],body.room2d #hint,body.room2d #labels,body.room2d #bubble{display:none!important}
+body.room2d{background:#f3eee6}
+body.room2d #home2d{display:flex;position:fixed;inset:0;z-index:2;overflow-y:auto;flex-direction:column;padding:92px 22px calc(28px + env(safe-area-inset-bottom));background:radial-gradient(120% 60% at 50% 0%,#e6ecdf 0%,#f3eee6 60%)}
+.h2-in{width:100%;max-width:440px;margin:auto;animation:pSwap .5s cubic-bezier(.2,.8,.2,1) both}
+.h2-av{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 10px 26px rgba(40,30,20,.18)}
+.h2-st{display:inline-flex;align-items:center;gap:7px;margin-top:0;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2f6b3a;background:#e2f1df;border-radius:999px;padding:7px 12px;line-height:1.3}
+.h2-st i{width:7px;height:7px;flex:none;border-radius:50%;background:#3fae55;box-shadow:0 0 0 3px rgba(63,174,85,.2)}
+#home2d h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:38px;line-height:1.05;letter-spacing:-.01em;color:#2a231d;margin-top:14px}
+#home2d h1 em{font-style:italic;font-weight:400;color:#5f7356}
+.h2-p{font-size:15.5px;line-height:1.55;color:#5c5249;margin-top:10px}
+.h2-list{display:grid;gap:10px;margin-top:22px}
+.h2-list button,.h2-list a{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fffdf9;border:1px solid rgba(42,35,29,.1);border-radius:18px;padding:14px 16px;color:#2a231d;text-decoration:none;font:inherit;box-shadow:0 6px 18px -10px rgba(40,30,20,.25);cursor:pointer;transition:transform .2s}
+.h2-list button:active,.h2-list a:active{transform:scale(.98)}
+.h2-list .ic{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:#e6ecdf;color:#3e5236}
+.h2-list .ic svg{width:21px;height:21px}
+.h2-list b{display:block;font-size:16px;font-weight:700}
+.h2-list small{display:block;font-size:13px;color:#7a6e62;margin-top:1px}
+.h2-list .go{margin-left:auto;color:#a39787;font-size:20px}
+.h2-list .pri{background:#2a231d;color:#fff;border-color:#2a231d}
+.h2-list .pri small{color:rgba(255,255,255,.7)}.h2-list .pri .ic{background:rgba(255,255,255,.12);color:#fff}.h2-list .pri .go{color:rgba(255,255,255,.6)}
+.h2-3d{display:block;margin:20px auto 0;text-align:center;font-size:13px;color:#7a6e62;text-decoration:underline;text-underline-offset:3px}
 /* mobile */
 @media (max-width:760px){
   .hint{bottom:calc(18px + env(safe-area-inset-bottom));font-size:11.5px}
@@ -1586,6 +1610,19 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
   <nav class="mmenu" id="mmenu" aria-label="Menu"><button data-visit="about"><b>About</b></button><button data-visit="laptop"><b>Work</b></button><button data-visit="notebook"><b>Journey</b></button><a href="https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link" target="_blank" rel="noopener" data-ext><b>Resume</b><span class="arrow"><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></span></a><button data-visit="phone"><b>Contact</b></button><button class="tour" data-tour><b>Take a tour</b></button></nav>
 </header>
 
+<main id="home2d" aria-label="Paridhi — portfolio"><div class="h2-in">
+  <div><span class="h2-st"><i></i><span id="h2Status"></span></span></div>
+  <h1>Hi, I’m Paridhi.<br><em>UX &amp; Product Designer</em></h1>
+  <p class="h2-p">I turn messy problems into simple, usable products, from research to design decisions to shipped screens.</p>
+  <div class="h2-list">
+    <button class="pri" data-visit="laptop"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span><b>Case studies</b><small>Trilyt, District, Decix Lab</small></span><span class="go">›</span></button>
+    <button data-visit="about"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></span><span><b>About me</b><small>How I work and what I bring</small></span><span class="go">›</span></button>
+    <button data-visit="notebook"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M6 3v18M10 8h5M10 12h5"/></svg></span><span><b>Journey</b><small>Experience and education</small></span><span class="go">›</span></button>
+    <a id="h2Resume" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><span><b>Resume</b><small>Opens the PDF</small></span><span class="go">↗</span></a>
+    <button data-visit="phone"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span><span><b>Contact</b><small>Say hello</small></span><span class="go">›</span></button>
+  </div>
+  <a class="h2-3d" href="?room">View my 3D room instead (best on a laptop)</a>
+</div></main>
 <div id="labels"></div>
 <div id="bubble" role="status" aria-live="polite"></div>
 <div class="pbar" id="pbar"><span>Photo mode · drag to frame your shot</span><button id="pDN">Day / night</button><button class="pri" id="pSnap">Capture image</button><button id="pExit">Exit</button></div>
@@ -2252,6 +2289,9 @@ const PI = Math.PI;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isNarrow = () => innerWidth < 760;
 const coarse = matchMedia('(pointer: coarse)').matches;
+// Phones get a simple, fast start screen instead of the 3D room (add ?room to the address to open the room anyway)
+const ROOM2D = coarse && isNarrow() && !/[?&]room\b/.test(location.search);
+if (ROOM2D) document.body.classList.add('room2d');
 
 function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 let R = rng(20261117);
@@ -2283,7 +2323,7 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x17120f);
 const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.02, 60);
 const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+if (!ROOM2D) scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 scene.environmentIntensity = 0.5;
 
 /* ------------------------------------------------------------------ texture helpers */
@@ -3460,7 +3500,7 @@ function closePanel(returnHome = true) {
   cam.tShift.set(0, 0);
   setObjOpen(key, false);
   setHash('');
-  if (returnHome) backHome(key);
+  if (returnHome && !ROOM2D) backHome(key);
 }
 function backHome(key) {
   const { yaw, pitch } = yawPitchTo(OBJ[key].anchor);
@@ -3775,7 +3815,8 @@ function openResume() {
   say(`Opening my resume in a new tab… <a class="ca-send" href="${esc(SITE.resumePdf)}" target="_blank" rel="noopener">Open resume PDF ${EXT_SVG}</a>`, { who: 'Resume', ms: 7000 });
 }
 function visit(key, { fast = false, caseId = null } = {}) {
-  if (key === 'poster' && SITE.resumePdf) { openResume(); return; } // always the real PDF, never the built-in sample resume
+  if (key === 'poster' && SITE.resumePdf) { openResume(); return; }
+  if (ROOM2D) { if (panelKey) closePanel(false); openPanel(key, caseId); return; } // always the real PDF, never the built-in sample resume
   const o = OBJ[key]; if (!o) return;
   const token = ++visitToken; tourOn = false; clearTimeout(tourTimer);
   if (panelKey) closePanel(false);
@@ -3901,6 +3942,7 @@ addEventListener('pointerdown', e => {
 }, { passive: true, capture: true });
 document.querySelectorAll('a[data-ext]').forEach(a => a.addEventListener('click', () => setMenu(false)));
 $('#logo').addEventListener('click', () => {
+  if (ROOM2D) { setMenu(false); if (panelKey) closePanel(); return; }
   setMenu(false); hush(); tourOn = false; ++visitToken; clearTimeout(tourTimer);
   if (panelKey) { closePanel(); return; }
   Object.keys(objOpen).forEach(k => setObjOpen(k, false));
@@ -4053,6 +4095,12 @@ addEventListener('resize', () => {
 /* ------------------------------------------------------------------ boot */
 (async function boot() {
   const L = window.__load || { set() { }, finish() { } };
+  if (ROOM2D) {
+    $('#h2Status').textContent = SITE.status; $('#h2Resume').href = SITE.resumePdf;
+    window.__roomReady = true; L.finish();
+    const h0 = location.hash.slice(1); if (h0 && (HASH[h0] || h0.startsWith('case-'))) routeHash();
+    return;
+  }
   const nextFrame = () => new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
   L.set(35, 'Unpacking fonts');
   try {
