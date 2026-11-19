@@ -529,7 +529,6 @@ body.case-full .topbar,body.case-full #labels,body.case-full .hint,body.case-ful
 .fc-n.new.e{background:#ff6b35}
 .fc-lab{position:absolute;transform:translateX(-50%);font:800 10px/1 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#7a6e62;background:#fffdf9;padding:2px 4px;border-radius:4px}
 .fc-link{position:absolute;text-align:center;font-style:normal;font:800 11px/1 Manrope,sans-serif;color:#c2410c}
-body.theme-dark #panel .fc-link{color:#ff9a70}
 .fc-n.t,.fc-n.e,.fc-n.h,.fc-n.p,.fc-n.d,.fc-lab,.fc-link{opacity:0;transition:opacity .5s ease}
 .fc.in .fc-n,.fc.in .fc-lab,.fc.in .fc-link{opacity:1}
 .fc-lines path{stroke-dasharray:4000;stroke-dashoffset:4000;transition:stroke-dashoffset 2.2s ease .2s}
@@ -1528,53 +1527,24 @@ body.room2d.h2-scrolled .topbar:before{opacity:1}
 .h2-3d{display:block;margin:20px auto 0;text-align:center;font-size:13px;color:#665b50;text-decoration:underline;text-underline-offset:3px}
 
 
-/* laptop: night mode also darkens the interface around the room (top bar, menu, tags, speech bubble) */
-body.ui-dark .topbar,body.ui-dark #labels,body.ui-dark #bubble,body.ui-dark .pbar,body.ui-dark .hint{--glass:rgba(30,27,24,.84);--paper:#221e1a;--paper-2:#2e2924;--ink:#f3eee6;--ink-2:#e6dfd5;--muted:#a89c8f;--line:rgba(255,255,255,.12)}
-body.ui-dark .logo,body.ui-dark .nav,body.ui-dark .icon-btn,body.ui-dark .hotspot{color:var(--ink);box-shadow:0 4px 24px rgba(0,0,0,.45)}
-body.ui-dark .nav button,body.ui-dark .nav a.navlink,body.ui-dark .icon-btn svg{color:var(--ink)}
-body.ui-dark .nav button:hover,body.ui-dark .nav a.navlink:hover{background:rgba(255,255,255,.08)}
-body.ui-dark .nav button.active,body.ui-dark .nav a.navlink.active{background:#3a332c;color:#f0a27e;box-shadow:none}
-body.ui-dark .nav button.active svg,body.ui-dark .nav a.navlink.active svg{color:#f0a27e}
-body.ui-dark .nav button.tour,body.ui-dark .mmenu button.tour{background:#f3eee6;color:#221e1a}
-body.ui-dark .nav button.tour:hover{background:#ffffff}
-body.ui-dark .mmenu{color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,.55)}
-body.ui-dark .mmenu button{color:var(--ink)}
-body.ui-dark .mmenu button.active,body.ui-dark .mmenu a.active{background:#3a332c}
-body.ui-dark .mmenu button.tour b{color:#221e1a!important}
-body.ui-dark .logo .mark{box-shadow:0 0 0 2px #3a332c,0 2px 8px rgba(0,0,0,.4)}
-body.ui-dark #bubble{background:#25211d;color:var(--ink-2)}
-body.ui-dark #bubble .acts button{background:var(--paper-2);color:var(--ink)}
-body.ui-dark #bubble .acts button.pri{background:#f3eee6;color:#221e1a}
-body.ui-dark #bubble .who{color:#b9cfa6}
-body.ui-dark .menu-btn .ln{background:var(--ink)}
-.logo,.nav,.icon-btn,.hotspot,#bubble,.mmenu{transition:background .5s,color .5s,box-shadow .5s}
-/* phone home: dark mode */
+/* lamp pull-cord: switches the room between day and night lighting (the interface itself always stays light) */
+#cord{position:fixed;top:0;left:clamp(280px,24vw,420px);z-index:9;width:34px;height:150px;border:0;background:none;padding:0;cursor:pointer;pointer-events:none;-webkit-tap-highlight-color:transparent;transform-origin:50% 0;animation:cordSway 5s ease-in-out infinite}
+#cord .cord-line{position:absolute;left:50%;top:0;width:2px;height:118px;margin-left:-1px;background:linear-gradient(#b9a98f,#8a7a62);transition:height .25s cubic-bezier(.2,1.6,.4,1)}
+#cord .cord-knob{pointer-events:auto;position:absolute;left:50%;top:114px;width:16px;height:24px;margin-left:-8px;border-radius:8px 8px 10px 10px;background:linear-gradient(160deg,#e9d8b4,#b68f52);box-shadow:0 3px 8px rgba(0,0,0,.35),inset 0 -3px 0 rgba(0,0,0,.15);transition:top .25s cubic-bezier(.2,1.6,.4,1)}
+#cord .cord-tip{position:absolute;top:146px;left:50%;transform:translateX(-50%);white-space:nowrap;font:700 11px/1 Manrope,sans-serif;color:#fff;background:rgba(30,26,22,.82);padding:5px 8px;border-radius:999px;opacity:0;transition:opacity .25s;pointer-events:none}
+#cord:hover .cord-tip,#cord:focus-visible .cord-tip,#cord.hint .cord-tip{opacity:1}
+#cord:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:8px}
+#cord.pull{animation:none}
+#cord.pull .cord-line{height:150px}#cord.pull .cord-knob{top:146px}
+@keyframes cordSway{0%,100%{transform:rotate(1.5deg)}50%{transform:rotate(-1.5deg)}}
+@media (prefers-reduced-motion:reduce){#cord{animation:none}}
+body.photo #cord,body.focus #cord{display:none}
+@media (max-width:760px){#cord{left:86%;height:120px}#cord .cord-line{height:92px}#cord .cord-knob{top:88px}#cord.pull .cord-line{height:118px}#cord.pull .cord-knob{top:114px}#cord .cord-tip{display:none}}
+body.room2d #cord{position:absolute}
+body.panel-open #cord{display:none}
+/* phone home: the room picture follows the cord too */
+body.room-night .h2-zoom img.h2-night{opacity:1}
 .h2-zoom img.h2-night{position:absolute;inset:0;opacity:0;transition:opacity .6s}
-body.h2-dark .h2-zoom img.h2-night{opacity:1}
-body.room2d #home2d,body.room2d .h2-hero:after,body.room2d .topbar:before,.h2-list button,.h2-list a,#home2d h1,#home2d h1 em,.h2-p{transition:background .5s,color .5s,opacity .25s}
-body.room2d.h2-dark{background:#181512}
-body.room2d.h2-dark #home2d{background:#181512}
-body.h2-dark .h2-hero:after{background:linear-gradient(rgba(24,21,18,0),#181512)}
-body.room2d.h2-dark .topbar:before{background:linear-gradient(#181512 62%,rgba(24,21,18,0))}
-body.h2-dark #home2d h1{color:#f3eee6} body.h2-dark #home2d h1 em{color:#a9bb9c}
-body.h2-dark .h2-p{color:#b9ad9f}
-body.h2-dark .h2-st{background:#22331f;color:#9fd4a2}
-body.h2-dark .h2-tip{background:rgba(24,21,18,.75);color:#d8cfc4}
-body.h2-dark .h2-tag{background:rgba(32,28,24,.92);color:#f3eee6} body.h2-dark .h2-tag i{background:#a9bb9c}
-body.h2-dark .h2-feat{background:linear-gradient(135deg,#2c3627,#233020);box-shadow:0 14px 30px -18px rgba(0,0,0,.8)}
-body.h2-dark .h2-feat b{color:#f3eee6} body.h2-dark .h2-feat em{color:#a9bb9c} body.h2-dark .h2-feat small{background:rgba(255,255,255,.1);color:#cfe0c4}
-body.h2-dark .h2-feat .fan img{border-color:#2c2824}
-body.h2-dark .h2-tile b{color:#f3eee6} body.h2-dark .h2-tile small{color:#a89c8f}
-body.h2-dark .t-sage{background:#26301f}body.h2-dark .t-sand{background:#33291d}body.h2-dark .t-sky{background:#1f2a31}body.h2-dark .t-blush{background:#352420}
-body.h2-dark .t-sage:active{background:#2f3b27}body.h2-dark .t-sand:active{background:#3d3123}body.h2-dark .t-sky:active{background:#26343c}body.h2-dark .t-blush:active{background:#402b26}
-body.h2-dark .h2-tile .ic{background:#f6f1ea}
-body.h2-dark .h2-list .go{background:rgba(255,255,255,.1);color:#f3eee6}
-body.h2-dark .h2-list .active{background:#2a2521!important}
-body.h2-dark .h2-3d{color:#a89c8f}
-body.room2d.h2-dark .logo,body.room2d.h2-dark .icon-btn{background:rgba(36,32,28,.85);color:#f3eee6}
-body.room2d.h2-dark .logo small{color:#b9ad9f}
-body.room2d.h2-dark .icon-btn svg{color:#f3eee6;stroke:currentColor}
-body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
 /* mobile */
 @media (max-width:760px){
   .hint{bottom:calc(18px + env(safe-area-inset-bottom));font-size:11.5px}
@@ -1647,274 +1617,6 @@ body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.clickfx{display:none}}
 
-/* ===== dark mode for section panels (About, Work & case studies, Journey, Contact) — follows the sun/moon toggle on every device ===== */
-body.theme-dark #panel{--paper:#1c1916;--paper-2:#26221e;--ink:#f3eee6;--ink-2:#e2dad0;--muted:#a89c8f;--line:rgba(255,255,255,.12);--glass:rgba(34,30,26,.86);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.6)}
-body.theme-dark #panel .ap2-num{-webkit-text-stroke-color:color-mix(in srgb,var(--k) 55%,#fff)}
-body.theme-dark #panel .ap2-key li:hover .ap2-num,body.theme-dark #panel .ap2-key li.on .ap2-num{color:color-mix(in srgb,var(--k) 55%,#fff)}
-body.theme-dark #panel img{filter:none}
-body.theme-dark #panel .p-close:hover{background:#322f2a}
-body.theme-dark #panel .p-back{background:rgba(34,30,26,0.12)}
-body.theme-dark #panel .p-back:hover{background:rgba(34,30,26,0.22)}
-body.theme-dark #panel.skin-work .p-head{background:#474542}
-body.theme-dark #panel.skin-journey .p-body{background-color:#29251d}
-body.theme-dark #panel .jt-sub{color:#c3c1be}
-body.theme-dark #panel .jr-yr{color:rgba(228,226,224,0.18)}
-body.theme-dark #panel .jr-card{background:#272217}
-body.theme-dark #panel .jt-cta{color:#d6d1cd!important}
-body.theme-dark #panel .jt-cta a{color:#ccb4a8}
-body.theme-dark #panel.skin-contact .p-body{background:#2d2b26}
-body.theme-dark #panel .ca-x{background:rgba(34,30,26,0.14)}
-body.theme-dark #panel .ca-x:hover{background:rgba(34,30,26,0.24)}
-body.theme-dark #panel .ca-day small{color:#c5c4c2;background:rgba(34,30,26,0.75)}
-body.theme-dark #panel .cb{color:#e7e6e5;background:#1d1d1d}
-body.theme-dark #panel .cm.out .cb{background:#2b3128}
-body.theme-dark #panel .ca-links{border:1px solid rgba(255,255,255,0.1)}
-body.theme-dark #panel .cl{background:#24211e;border-bottom:1px solid rgba(255,255,255,0.1)}
-body.theme-dark #panel .cl:hover{background:#292623}
-body.theme-dark #panel .cl .ic-img{background:#1d1d1d}
-body.theme-dark #panel .cl-go{color:#cacfc8}
-body.theme-dark #panel .ca-quick button{background:rgba(34,30,26,0.85);color:#d3d8d2}
-body.theme-dark #panel .ca-compose{background:#322f2b}
-body.theme-dark #panel .ca-compose input{background:#1d1d1d}
-body.theme-dark #panel .ca-note{color:#c5c4c2}
-body.theme-dark #panel.skin-resume .p-body{background:#2b2924}
-body.theme-dark #panel.skin-about .p-body{background:#282722}
-body.theme-dark #panel .ab-card{background:#272117}
-body.theme-dark #panel .xp{background:#454643}
-body.theme-dark #panel .skill-cards span{background:#454643}
-body.theme-dark #panel .tl-dot{background:#282722}
-body.theme-dark #panel .bt figcaption{background:linear-gradient(180deg,transparent,rgba(255,255,255,0.18))}
-body.theme-dark #panel .facts2 div{background:#272117}
-body.theme-dark #panel .rot{color:#1a1a1a;border-color:#f3eee6;box-shadow:3px 4px 0 #f3eee6}
-body.theme-dark #panel .card{background:#272117}
-body.theme-dark #panel .thumb.vid{background:#1d1d1d}
-body.theme-dark #panel .status{color:#c8d7cb;background:#252c24}
-body.theme-dark #panel .eye-div:before{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .eye-pill{background:#2b2a27}
-body.theme-dark #panel .eye-txt{color:#d4d3d2}
-body.theme-dark #panel .eyes i{background:#1d1d1d}
-body.theme-dark #panel .eyes i b:after{background:#1d1d1d}
-body.theme-dark #panel .ap2-lead mark{color:#d9c0b3}
-body.theme-dark #panel .au.good .au-dot{background:radial-gradient(circle at 35% 30%,#555,#454545 65%)}
-body.theme-dark #panel .au.good .au-red{color:#e9e9e9;background:linear-gradient(transparent 60%,#463e29 60%)}
-body.theme-dark #panel .au.good .au-num{background:#454545}
-body.theme-dark #panel .au.good .au-head h4{background-image:linear-gradient(#454545,#454545)}
-body.theme-dark #panel .au-fix{color:#caddd0;background:#222b25}
-body.theme-dark #panel .au-cap{background:#454545}
-body.theme-dark #panel .rd-n{background:#454545}
-body.theme-dark #panel .fc-wrap{background:#272117}
-body.theme-dark #panel .fc-n.t, body.theme-dark #panel .fc-n.e{background:#454545}
-body.theme-dark #panel .fc-n.p{background:#1d1d1d;border:1.5px solid #403e3b}
-body.theme-dark #panel .fc-n.hub{background:#282622}
-body.theme-dark #panel .fc-n.h{background:#454545}
-body.theme-dark #panel .fc-n.d:after{background:#34301f}
-body.theme-dark #panel .fc-n.new.p{background:#2c221a;color:#d7c0b6}
-body.theme-dark #panel .fc-n.new.d:after{background:#31261d}
-body.theme-dark #panel .fc-lab{color:#c3c1be;background:#272117}
-body.theme-dark #panel .uf-key .k-t{background:#454545}
-body.theme-dark #panel .uf-key .k-p{background:#1d1d1d}
-body.theme-dark #panel .uf-key .k-d{background:#34301f}
-body.theme-dark #panel .ia{background:#272117}
-body.theme-dark #panel .ia-root span{background:#454545}
-body.theme-dark #panel .ia-root:after{background:#454545}
-body.theme-dark #panel .ia-cols:before{background:#454545}
-body.theme-dark #panel .ia-col:before{background:#454545}
-body.theme-dark #panel .ia-tab{background:#454545}
-body.theme-dark #panel .ia-ic{background:rgba(34,30,26,0.12)}
-body.theme-dark #panel .ia-l2:before{background:#373532}
-body.theme-dark #panel .ia-l2>li{background:#282622}
-body.theme-dark #panel .ia-l2>li:before{background:#373532}
-body.theme-dark #panel .ia-l2>li.new{background:#31261d}
-body.theme-dark #panel .ia-l3{border-left:1.5px dashed #403e3b}
-body.theme-dark #panel .uf-key .k-l1{background:#454545}
-body.theme-dark #panel .uf-key .k-l2{background:#282622}
-body.theme-dark #panel .uf-key .k-l3{border-left:2px dashed #403e3b}
-body.theme-dark #panel .uf-key .k-new{background:#31261d}
-body.theme-dark #panel .uf{background:#272117}
-body.theme-dark #panel .uf-s{background:#454545}
-body.theme-dark #panel .uf-s.last{background:#1d1d1d}
-body.theme-dark #panel .uf-trunk{background:#454545}
-body.theme-dark #panel .uf-start .uf-arr{background:#454545}
-body.theme-dark #panel .uf-lane{background:#282520}
-body.theme-dark #panel .uf-lane.new{background:linear-gradient(135deg,#2c221a,#31261d)}
-body.theme-dark #panel .uf-ic{background:#454545}
-body.theme-dark #panel .uf-node{background:#1d1d1d}
-body.theme-dark #panel .uf-node li{background:#282622}
-body.theme-dark #panel .uf-node li.star{background:#31261d;color:#d7c0b6}
-body.theme-dark #panel .uf-node.end{background:#454545}
-body.theme-dark #panel .uf-node.end li{background:#454545}
-body.theme-dark #panel .uf-key .k-new{background:#31261d}
-body.theme-dark #panel .uf-key .k-end{background:#454545}
-body.theme-dark #panel .ty-btn{background:#454545}
-body.theme-dark #panel .ty-btn:hover{background:#454545}
-body.theme-dark #panel .wh-orb i{background:#1d1d1d}
-body.theme-dark #panel .pd2-pin{color:#dfe4eb}
-body.theme-dark #panel .pd2-heard{background:#272117}
-body.theme-dark #panel .pd2-heard span{color:#a6b1ce}
-body.theme-dark #panel .pd2-moves li{background:#272117}
-body.theme-dark #panel .pd2-moves li.hot{background:#1c2820}
-body.theme-dark #panel .pd2-moves i{color:#dfe4eb}
-body.theme-dark #panel .pd2-pr{background:linear-gradient(135deg,#1d2b23,#1a271f);border:1px solid #35453b}
-body.theme-dark #panel .pd2-pr span{color:#c0dccb}
-body.theme-dark #panel .pd2-tr span{color:#dcd0b7}
-body.theme-dark #panel .pd3-c.no{background:#282622}
-body.theme-dark #panel .pd3-c.yes{background:#1d2b23}
-body.theme-dark #panel .pd3-c.yes b{color:#c0dccb}
-body.theme-dark #panel .pd3-c.tf{background:#272117}
-body.theme-dark #panel .pd3-c.tf b{color:#dcd0b7}
-body.theme-dark #panel .pr-c{background:#272117}
-body.theme-dark #panel .pr-n{color:rgba(223,227,234,0.06)}
-body.theme-dark #panel .pr-c mark{background:linear-gradient(transparent 58%,#293e30 58%,#293e30 92%,transparent 92%)}
-@media (max-width:640px){
-body.theme-dark #panel .pr-c:nth-child(3){background:#272117}
-body.theme-dark #panel .pr-c:nth-child(3) .pr-n{color:rgba(223,227,234,0.06)}
-body.theme-dark #panel .pr-c:nth-child(3) mark{background-image:linear-gradient(transparent 58%,#293e30 58%,#293e30 92%,transparent 92%)}
-}
-body.theme-dark #panel .rs-h span{color:#c0dccb;background:#222b25}
-body.theme-dark #panel .rs-av{background:#1c222f;color:#a6b1ce}
-body.theme-dark #panel .rs-av.sr{background:#222b25;color:#c0dccb}
-body.theme-dark #panel .rs-q blockquote{background:#272117}
-body.theme-dark #panel .dxh-cards div{background:rgba(34,30,26,0.06)}
-body.theme-dark #panel .dxh-cards div:hover{background:rgba(34,30,26,0.1)}
-body.theme-dark #panel .edi{background:#272117}
-body.theme-dark #panel .edi-ic{background:#212326}
-body.theme-dark #panel .edi-line{background:repeating-linear-gradient(90deg,#3c3b38 0 8px,transparent 8px 14px)}
-body.theme-dark #panel .edi-tk{background:#2b1d1c;border:1px solid #473634}
-body.theme-dark #panel .edi-tk span{color:#d6b5b2}
-body.theme-dark #panel .edi-cards div, body.theme-dark #panel .stm-cards div{background:#272117}
-body.theme-dark #panel .edi-cards span, body.theme-dark #panel .stm-cards span{color:#c0dccb}
-body.theme-dark #panel .pd-track{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .pd-track a.done i{color:#dfe4eb}
-body.theme-dark #panel .pd-track a.on{color:#dfe4eb}
-@media (max-width:640px){
-body.theme-dark #panel .edi-line{background:repeating-linear-gradient(180deg,#3c3b38 0 8px,transparent 8px 14px)}
-}
-body.theme-dark #panel .jr-col.bf{background:#262020;border:1px solid #433937}
-body.theme-dark #panel .jr-col.bf h4{color:#d6b5b2}
-body.theme-dark #panel .jr-col li:before{background:#1d1d1d}
-body.theme-dark #panel .jr-col.af li.end b{color:#dfe4eb}
-body.theme-dark #panel .wh-n i{color:#dfe4eb}
-body.theme-dark #panel .tr-c{background:#272117}
-body.theme-dark #panel .tr-img{background:#212326!important}
-body.theme-dark #panel .nb-c{background:#272117;border:1px dashed #403e3b}
-body.theme-dark #panel .nb-x{background:#2b1d1c;color:#d6b5b2}
-body.theme-dark #panel .nb-c b{text-decoration-color:rgba(214,181,178,0.5)}
-body.theme-dark #panel .qt-pains li{background:#272117}
-body.theme-dark #panel .pd-c{background:#272117}
-body.theme-dark #panel .pd-c.chose b{color:#a6b1ce}
-body.theme-dark #panel .pd-c.trade b{color:#dcd0b7}
-body.theme-dark #panel .pd-c.imp b{color:#c0dccb}
-body.theme-dark #panel .pd-c.chose{background:#191e2a;border-color:#343947}
-body.theme-dark #panel .fb-g{background:#272117}
-body.theme-dark #panel .fb-g.liked .fb-wm{color:#bfd9ce}
-body.theme-dark #panel .fb-g.asked .fb-wm{color:#d6c9ae}
-body.theme-dark #panel .fb-g.liked h4{color:#caddd0}
-body.theme-dark #panel .fb-g.asked h4{color:#dcd0b7}
-body.theme-dark #panel .fb-g.suggested h4{color:#beb1d3}
-body.theme-dark #panel .fb-g.liked h4 span{background:#222b25;color:#caddd0}
-body.theme-dark #panel .fb-g.asked h4 span{background:#2f2a1f;color:#dcd0b7}
-body.theme-dark #panel .fb-g.suggested h4 span{background:#201a2c;color:#beb1d3}
-body.theme-dark #panel .fb-ch{background:#454545}
-body.theme-dark #panel .oc-hero{background:#454545}
-body.theme-dark #panel .oc-grow{background:#272117}
-body.theme-dark #panel .oc-bars i{background:#302d29}
-body.theme-dark #panel .oc-stats div{background:#272117}
-body.theme-dark #panel .ds-ba{background:#272117}
-body.theme-dark #panel .ds-flag.no{color:#d6b5b2;background:#2b1d1c}
-body.theme-dark #panel .ds-flag.yes{color:#caddd0;background:#222b25}
-body.theme-dark #panel .ds-arrow{background:#454545}
-body.theme-dark #panel .ds-stats div{background:#454545}
-body.theme-dark #panel .ds-tiers div{background:#272117}
-body.theme-dark #panel .ds-font{background:#454545}
-body.theme-dark #panel .ds-w span{background:#454545}
-body.theme-dark #panel .status.concept{color:#beb1d3;background:#201a2c}
-body.theme-dark #panel .ch-note{background:#211c29;border:1px solid #3a3248;color:#cec7da!important}
-body.theme-dark #panel .dz-chart{background:#272117}
-body.theme-dark #panel .dz-bars i{background:#2d2925}
-body.theme-dark #panel .dz-means{background:#201b29;color:#d2cedb!important}
-body.theme-dark #panel .dz-means b{color:#beb1d3}
-body.theme-dark #panel .dz-persona aside{background:#272117}
-body.theme-dark #panel .dz-persona dd{color:#beb1d3}
-body.theme-dark #panel .dz-traits span{color:#beb1d3;background:#201a2c}
-body.theme-dark #panel .dz-pcols section{background:#272117}
-body.theme-dark #panel .dz-dec{background:#272117}
-body.theme-dark #panel .dz-vs .no{background:#282622}
-body.theme-dark #panel .dz-vs .yes{background:#201a2c}
-body.theme-dark #panel .dz-vs .yes b{color:#beb1d3}
-body.theme-dark #panel .dz-trade b{color:#dcd0b7}
-body.theme-dark #panel .dz-flow li{background:#272117}
-body.theme-dark #panel .dz-flow li.fr{background:#201a2c;border-color:#3a3149}
-body.theme-dark #panel .dz-flow li:not(:last-child):after{background:#30293e}
-body.theme-dark #panel .dz-task{background:#272117;border:1px dashed #3a3447}
-body.theme-dark #panel .dz-probe{background:#201a2c}
-body.theme-dark #panel .dz-probe ul{color:#d2cedb}
-body.theme-dark #panel .dz-imp{background:#272117}
-body.theme-dark #panel .dz-imp .tag{color:#dcd0b7;background:#2f2a1f}
-body.theme-dark #panel .dz-imp .m{color:#d2cedb;background:#201b29}
-body.theme-dark #panel .scr-frame{background:#1d1d1d}
-body.theme-dark #panel .scr-hint{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .au-note{background:#1d1d1d}
-body.theme-dark #panel .av-card{background:linear-gradient(135deg,#202924,#1d2520);border:1.5px solid #38433c}
-body.theme-dark #panel .av-k{color:#c9dfd6}
-body.theme-dark #panel .av-card p{color:#d9e2de!important}
-body.theme-dark #panel .av-card b{color:#dde8e3}
-body.theme-dark #panel .impl-badge{color:#c9dfd6;background:#222a25;border:1.5px solid #38423d}
-body.theme-dark #panel .ap2-trade{background:linear-gradient(135deg,#2d251b,#2f251d);border:1px solid #473d34}
-body.theme-dark #panel .ap2-trade p{color:#e4dcd0!important}
-body.theme-dark #panel .ap-card{background:#454545}
-body.theme-dark #panel .iph{background:linear-gradient(145deg,#4a4550,#444346 40%,#444347)}
-body.theme-dark #panel .iph-screen{background:#202020}
-body.theme-dark #panel .iph.light .iph-status{color:#ebebeb;background:rgba(34,30,26,0.88)}
-body.theme-dark #panel .iph-island{background:#454545}
-body.theme-dark #panel .iph-homebar{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .ap-full:hover{background:rgba(34,30,26,0.1)}
-body.theme-dark #panel .appr-tabs{background:#2b2a27}
-body.theme-dark #panel .appr-tabs button{color:#c5c4c2}
-body.theme-dark #panel .appr-tabs button.on{background:#454545}
-body.theme-dark #panel .st-list div{background:#272117}
-body.theme-dark #panel .zoomable{background:#444248}
-body.theme-dark #panel .zoom-hint{background:rgba(34,30,26,0.92);color:#e8e7e5}
-body.theme-dark #panel #lightbox{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel #lightbox .lb-bar button{background:rgba(34,30,26,0.12)}
-body.theme-dark #panel #lightbox .lb-bar button:hover{background:rgba(34,30,26,0.22)}
-body.theme-dark #panel .is-challenge .st-label em, body.theme-dark #panel .is-challenge .st-label .eyebrow{color:#d1b0ab!important}
-body.theme-dark #panel .ch-block{background:linear-gradient(160deg,#291c18,#2d1f1c);border:1px solid #463734}
-body.theme-dark #panel .ch-tape{background:repeating-linear-gradient(-45deg,#d23a24 0 12px,#291c18 12px 24px)}
-body.theme-dark #panel .ch-h{color:#e0c7c4}
-body.theme-dark #panel .ch-plus{color:#d1b0ab}
-body.theme-dark #panel .ch-card{background:#1d1d1d}
-body.theme-dark #panel .ch-n{color:#d1b0ab}
-body.theme-dark #panel .ch-card b{color:#e8dcdb}
-body.theme-dark #panel .ch-card p{color:#d7cecd!important}
-body.theme-dark #panel .ch-strike{color:#e8dcdb!important}
-body.theme-dark #panel .ch-strike mark{color:#e0c7c4}
-body.theme-dark #panel .ch-body{color:#d7cecd!important}
-body.theme-dark #panel .st-stats div{background:#272117}
-body.theme-dark #panel .facts div{background:#272117}
-body.theme-dark #panel .goals li{background:#272117}
-body.theme-dark #panel .insight{background:#272117}
-body.theme-dark #panel .feature{background:#272117}
-body.theme-dark #panel .next{background:#454545}
-body.theme-dark #panel .nx-go{color:#e9e9e9;background:#1d1d1d}
-body.theme-dark #panel .sample-note{border:1px dashed rgba(255,255,255,0.25)}
-body.theme-dark #panel .msg{background:#1d1d1d}
-body.theme-dark #panel .c-avatar span{color:#bbcabe}
-body.theme-dark #panel .links{background:#1d1d1d}
-body.theme-dark #panel form.cf{background:#1d1d1d}
-body.theme-dark #panel form.cf input, body.theme-dark #panel form.cf textarea{background:#23211d}
-body.theme-dark #panel .cf-result{background:#242722}
-body.theme-dark #panel .r-sec h3:after{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .skills span{border:1px solid rgba(255,255,255,0.2)}
-body.theme-dark #panel .bar div{background:rgba(255,255,255,0.13)}
-body.theme-dark #panel .t-sage{background:#2a2d27}
-body.theme-dark #panel .t-sand{background:#302c25}
-body.theme-dark #panel .t-sky{background:#26292b}
-body.theme-dark #panel .t-blush{background:#2e2623}
-body.theme-dark #panel .t-sage:active{background:#30332d}
-body.theme-dark #panel .t-sand:active{background:#36312a}
-body.theme-dark #panel .t-sky:active{background:#2b2f31}
-body.theme-dark #panel .t-blush:active{background:#352c28}
-body.theme-dark #panel .clickfx.light s{background:#2d2c2a}
 </style>
 <script>
 (function () {
@@ -1959,7 +1661,6 @@ body.theme-dark #panel .clickfx.light s{background:#2d2c2a}
     <div class="tools">
       <button class="icon-btn" id="photoBtn" title="Photo mode — save a picture of the room" aria-label="Photo mode: save a picture of the room"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg></button>
       <button class="icon-btn" id="soundBtn" aria-pressed="true" title="Sound on — click to mute" aria-label="Click sounds on"></button>
-      <button class="icon-btn" id="dayNight" title="Switch day / night" aria-label="Switch between day and night"></button>
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span class="box"><span class="ln"></span><span class="ln"></span><span class="ln"></span></span></button>
     </div>
   </div>
@@ -1989,6 +1690,7 @@ body.theme-dark #panel .clickfx.light s{background:#2d2c2a}
   </div>
   <a class="h2-3d" href="?room">View my 3D room instead (best on a laptop)</a>
 </div></main>
+<button id="cord" type="button" aria-label="Pull the lamp cord to switch the room lights" aria-pressed="false"><span class="cord-line"></span><span class="cord-knob"></span><span class="cord-tip">Pull for lights</span></button>
 <div id="labels"></div>
 <div id="bubble" role="status" aria-live="polite"></div>
 <div class="pbar" id="pbar"><span>Photo mode · drag to frame your shot</span><button id="pDN">Day / night</button><button class="pri" id="pSnap">Capture image</button><button id="pExit">Exit</button></div>
@@ -4375,17 +4077,15 @@ const SUN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 const MOON_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
 const hr = new Date().getHours();
 let nightT = (hr >= 19 || hr < 6) ? 1 : 0, night = nightT;
-const dn = $('#dayNight');
-const setDNIcon = () => { dn.innerHTML = nightT ? SUN_ICON : MOON_ICON; dn.title = nightT ? 'Switch to day' : 'Switch to night'; };
-dn.addEventListener('click', () => { nightT = nightT ? 0 : 1; setDNIcon(); document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT); document.body.classList.toggle('theme-dark', !!nightT); if (ROOM2D) { document.body.classList.toggle('h2-dark', !!nightT); try { localStorage.setItem('h2-theme', nightT ? 'dark' : 'light'); } catch (e) { } } });
-if (ROOM2D) { // phones: remember the visitor's choice, otherwise follow their phone's own light/dark setting
-  let pref = null; try { pref = localStorage.getItem('h2-theme'); } catch (e) { }
-  nightT = pref ? (pref === 'dark' ? 1 : 0) : (matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0);
-  document.body.classList.toggle('h2-dark', !!nightT);
-}
-setDNIcon();
-document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT);
-document.body.classList.toggle('theme-dark', !!nightT);
+const cord = $('#cord');
+const syncNight = () => { cord.setAttribute('aria-pressed', nightT ? 'true' : 'false'); cord.querySelector('.cord-tip').textContent = nightT ? 'Pull for daylight' : 'Pull for evening light'; document.body.classList.toggle('room-night', !!nightT); };
+cord.addEventListener('click', () => {
+  nightT = nightT ? 0 : 1; syncNight(); try { clickSound(); } catch (e) { }
+  cord.classList.add('pull'); setTimeout(() => cord.classList.remove('pull'), 260);
+});
+if (ROOM2D) { const hm = document.getElementById('home2d'); if (hm) hm.querySelector('.h2-hero').appendChild(cord); }   // on phones the cord hangs inside the room picture
+syncNight();
+setTimeout(() => { cord.classList.add('hint'); setTimeout(() => cord.classList.remove('hint'), 3200); }, 4500);
 
 /* hotspots */
 const EXT_SVG = '<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>';
@@ -4428,7 +4128,7 @@ function snapRoom() {
 }
 $('#pSnap').addEventListener('click', snapRoom);
 $('#photoBtn').addEventListener('click', () => { setHash('photo'); enterPhoto(); });
-$('#pDN').addEventListener('click', () => $('#dayNight').click());
+$('#pDN').addEventListener('click', () => $('#cord').click());
 $('#pExit').addEventListener('click', exitPhoto);
 $('#pDone').addEventListener('click', exitPhoto);
 $('#pAgain').addEventListener('click', () => $('#pshot').classList.remove('on'));
