@@ -1467,7 +1467,7 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
 
 /* simple phone home (no 3D): phones get a fast, clean start screen; ?room opens the 3D room anyway */
 #home2d{display:none}
-body.room2d #scene,body.room2d .vignette,body.room2d .grain,body.room2d #photoBtn,body.room2d #dayNight,body.room2d [data-tour],body.room2d #hint,body.room2d #labels,body.room2d #bubble{display:none!important}
+body.room2d #scene,body.room2d .vignette,body.room2d .grain,body.room2d #photoBtn,body.room2d [data-tour],body.room2d #hint,body.room2d #labels,body.room2d #bubble{display:none!important}
 body.room2d{background:#f3eee6}
 body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:auto;background:#f3eee6;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .h2-hero{position:relative;overflow:hidden;aspect-ratio:800/792;width:100%}
@@ -1490,17 +1490,90 @@ body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:au
 #home2d h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:38px;line-height:1.05;letter-spacing:-.01em;color:#2a231d;margin-top:14px}
 #home2d h1 em{font-style:italic;font-weight:400;color:#5f7356}
 .h2-p{font-size:15.5px;line-height:1.55;color:#5c5249;margin-top:10px}
-.h2-list{display:grid;gap:10px;margin-top:22px}
-.h2-list button,.h2-list a{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fffdf9;border:1px solid rgba(42,35,29,.1);border-radius:18px;padding:14px 16px;color:#2a231d;text-decoration:none;font:inherit;box-shadow:0 6px 18px -10px rgba(40,30,20,.25);cursor:pointer;transition:transform .2s}
-.h2-list button:active,.h2-list a:active{transform:scale(.98)}
-.h2-list .ic{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:#e6ecdf;color:#3e5236}
-.h2-list .ic svg{width:21px;height:21px}
-.h2-list b{display:block;font-size:16px;font-weight:700}
-.h2-list small{display:block;font-size:13px;color:#7a6e62;margin-top:1px}
-.h2-list .go{margin-left:auto;color:#a39787;font-size:20px}
-.h2-list .pri{background:#2a231d;color:#fff;border-color:#2a231d}
-.h2-list .pri small{color:rgba(255,255,255,.7)}.h2-list .pri .ic{background:rgba(255,255,255,.12);color:#fff}.h2-list .pri .go{color:rgba(255,255,255,.6)}
+.h2-list{margin-top:22px;display:grid;gap:12px}
+.h2-list button,.h2-list a{font:inherit;color:#2a231d;text-decoration:none;text-align:left;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;transition:transform .18s cubic-bezier(.2,.8,.2,1),background .2s,box-shadow .2s}
+.h2-list button:active,.h2-list a:active{transform:scale(.97)}
+.h2-list .go{position:absolute;right:12px;top:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.75);display:grid;place-items:center;color:#2a231d;transition:background .2s,color .2s,transform .25s}
+.h2-list .go svg{width:14px;height:14px}
+.h2-list :active>.go{transform:rotate(45deg)}
+.h2-feat{display:flex;align-items:center;width:100%;min-height:150px;padding:18px 18px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#dfe7d6,#c9d6bd);box-shadow:0 14px 30px -18px rgba(62,82,54,.55)}
+.h2-feat .tx{position:relative;z-index:2;max-width:56%}
+.h2-feat small{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#3e5236;background:rgba(255,255,255,.6);padding:4px 9px;border-radius:999px}
+.h2-feat b{display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:27px;line-height:1.05;margin-top:9px}
+.h2-feat em{display:block;font-style:normal;font-size:12.5px;font-weight:600;color:#55634c;margin-top:5px;line-height:1.35}
+.h2-feat .fan{position:absolute;right:-4px;bottom:-16px;width:44%;height:140px}
+.h2-feat .fan img{position:absolute;bottom:0;width:78px;height:100px;object-fit:cover;border-radius:12px;border:3px solid #fff;box-shadow:0 10px 20px -8px rgba(0,0,0,.45);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.h2-feat .fan img:nth-child(1){right:8px;transform:rotate(12deg)}
+.h2-feat .fan img:nth-child(2){right:36px;transform:rotate(2deg)}
+.h2-feat .fan img:nth-child(3){right:66px;transform:rotate(-9deg)}
+.h2-feat:active .fan img:nth-child(1){transform:rotate(16deg) translateY(-6px)}
+.h2-feat:active .fan img:nth-child(3){transform:rotate(-14deg) translateY(-6px)}
+.h2-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.h2-tile{display:flex;flex-direction:column;align-items:flex-start;min-height:132px;padding:14px;border-radius:22px}
+.h2-tile .ic{width:44px;height:44px;border-radius:14px;background:#fff;display:grid;place-items:center;color:#2a231d;box-shadow:0 4px 10px -6px rgba(0,0,0,.3);margin-bottom:auto}
+.h2-tile .ic svg{width:21px;height:21px}
+.h2-tile .ic.av{width:52px;height:52px;border-radius:50%;padding:3px;overflow:hidden;background:#fff}.h2-tile .ic.av img{display:block;width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.h2-tile .ic.col{width:52px;height:52px;border-radius:50%}.h2-tile .ic.col svg{width:34px;height:34px}
+.h2-tile b{display:block;font-size:16px;font-weight:800;margin-top:14px}
+.h2-tile small{display:block;font-size:12px;color:#6e6358;margin-top:2px;line-height:1.3}
+.t-sage{background:#e3eadb}.t-sand{background:#f1e6d3}.t-sky{background:#e0e8ec}.t-blush{background:#f4e1d8}
+.t-sage:active{background:#d6e0cb}.t-sand:active{background:#eadbc2}.t-sky:active{background:#d1dde3}.t-blush:active{background:#eed2c5}
+.h2-list .active{background:#fff!important;box-shadow:0 0 0 2px var(--accent),0 10px 24px -14px rgba(0,0,0,.4)}
+.h2-list .active b{color:var(--accent)}
+.h2-list .active .go{background:var(--accent);color:#fff}
+@media (max-width:350px){.h2-feat b{font-size:22px}.h2-feat .fan img{width:64px;height:84px}.h2-feat .fan img:nth-child(2){right:28px}.h2-feat .fan img:nth-child(3){right:50px}}
+body.room2d .topbar:before{content:'';position:absolute;left:-10px;right:-10px;top:-10px;height:96px;background:linear-gradient(#f3eee6 62%,rgba(243,238,230,0));opacity:0;transition:opacity .25s;pointer-events:none;z-index:-1}
+body.room2d.h2-scrolled .topbar:before{opacity:1}
 .h2-3d{display:block;margin:20px auto 0;text-align:center;font-size:13px;color:#7a6e62;text-decoration:underline;text-underline-offset:3px}
+
+
+/* laptop: night mode also darkens the interface around the room (top bar, menu, tags, speech bubble) */
+body.ui-dark .topbar,body.ui-dark #labels,body.ui-dark #bubble,body.ui-dark .pbar,body.ui-dark .hint{--glass:rgba(30,27,24,.84);--paper:#221e1a;--paper-2:#2e2924;--ink:#f3eee6;--ink-2:#e6dfd5;--muted:#a89c8f;--line:rgba(255,255,255,.12)}
+body.ui-dark .logo,body.ui-dark .nav,body.ui-dark .icon-btn,body.ui-dark .hotspot{color:var(--ink);box-shadow:0 4px 24px rgba(0,0,0,.45)}
+body.ui-dark .nav button,body.ui-dark .nav a.navlink,body.ui-dark .icon-btn svg{color:var(--ink)}
+body.ui-dark .nav button:hover,body.ui-dark .nav a.navlink:hover{background:rgba(255,255,255,.08)}
+body.ui-dark .nav button.active,body.ui-dark .nav a.navlink.active{background:#3a332c;color:#f0a27e;box-shadow:none}
+body.ui-dark .nav button.active svg,body.ui-dark .nav a.navlink.active svg{color:#f0a27e}
+body.ui-dark .nav button.tour,body.ui-dark .mmenu button.tour{background:#f3eee6;color:#221e1a}
+body.ui-dark .nav button.tour:hover{background:#ffffff}
+body.ui-dark .mmenu{color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+body.ui-dark .mmenu button{color:var(--ink)}
+body.ui-dark .mmenu button.active,body.ui-dark .mmenu a.active{background:#3a332c}
+body.ui-dark .mmenu button.tour b{color:#221e1a!important}
+body.ui-dark .logo .mark{box-shadow:0 0 0 2px #3a332c,0 2px 8px rgba(0,0,0,.4)}
+body.ui-dark #bubble{background:#25211d;color:var(--ink-2)}
+body.ui-dark #bubble .acts button{background:var(--paper-2);color:var(--ink)}
+body.ui-dark #bubble .acts button.pri{background:#f3eee6;color:#221e1a}
+body.ui-dark #bubble .who{color:#b9cfa6}
+body.ui-dark .menu-btn .ln{background:var(--ink)}
+.logo,.nav,.icon-btn,.hotspot,#bubble,.mmenu{transition:background .5s,color .5s,box-shadow .5s}
+/* phone home: dark mode */
+.h2-zoom img.h2-night{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+body.h2-dark .h2-zoom img.h2-night{opacity:1}
+body.room2d #home2d,body.room2d .h2-hero:after,body.room2d .topbar:before,.h2-list button,.h2-list a,#home2d h1,#home2d h1 em,.h2-p{transition:background .5s,color .5s,opacity .25s}
+body.room2d.h2-dark{background:#181512}
+body.room2d.h2-dark #home2d{background:#181512}
+body.h2-dark .h2-hero:after{background:linear-gradient(rgba(24,21,18,0),#181512)}
+body.room2d.h2-dark .topbar:before{background:linear-gradient(#181512 62%,rgba(24,21,18,0))}
+body.h2-dark #home2d h1{color:#f3eee6} body.h2-dark #home2d h1 em{color:#a9bb9c}
+body.h2-dark .h2-p{color:#b9ad9f}
+body.h2-dark .h2-st{background:#22331f;color:#9fd4a2}
+body.h2-dark .h2-tip{background:rgba(24,21,18,.75);color:#d8cfc4}
+body.h2-dark .h2-tag{background:rgba(32,28,24,.92);color:#f3eee6} body.h2-dark .h2-tag i{background:#a9bb9c}
+body.h2-dark .h2-feat{background:linear-gradient(135deg,#2c3627,#233020);box-shadow:0 14px 30px -18px rgba(0,0,0,.8)}
+body.h2-dark .h2-feat b{color:#f3eee6} body.h2-dark .h2-feat em{color:#a9bb9c} body.h2-dark .h2-feat small{background:rgba(255,255,255,.1);color:#cfe0c4}
+body.h2-dark .h2-feat .fan img{border-color:#2c2824}
+body.h2-dark .h2-tile b{color:#f3eee6} body.h2-dark .h2-tile small{color:#a89c8f}
+body.h2-dark .t-sage{background:#26301f}body.h2-dark .t-sand{background:#33291d}body.h2-dark .t-sky{background:#1f2a31}body.h2-dark .t-blush{background:#352420}
+body.h2-dark .t-sage:active{background:#2f3b27}body.h2-dark .t-sand:active{background:#3d3123}body.h2-dark .t-sky:active{background:#26343c}body.h2-dark .t-blush:active{background:#402b26}
+body.h2-dark .h2-tile .ic{background:#f6f1ea}
+body.h2-dark .h2-list .go{background:rgba(255,255,255,.1);color:#f3eee6}
+body.h2-dark .h2-list .active{background:#2a2521!important}
+body.h2-dark .h2-3d{color:#a89c8f}
+body.room2d.h2-dark .logo,body.room2d.h2-dark .icon-btn{background:rgba(36,32,28,.85);color:#f3eee6}
+body.room2d.h2-dark .logo small{color:#b9ad9f}
+body.room2d.h2-dark .icon-btn svg{color:#f3eee6;stroke:currentColor}
+body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
 /* mobile */
 @media (max-width:760px){
   .hint{bottom:calc(18px + env(safe-area-inset-bottom));font-size:11.5px}
@@ -1624,7 +1697,7 @@ body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:au
 </header>
 
 <main id="home2d" aria-label="Paridhi — portfolio">
-  <div class="h2-hero"><div class="h2-zoom"><img src="media/room-still.jpg" alt="Paridhi's room: a desk with a laptop, phone and photo frame beside a bookshelf">
+  <div class="h2-hero"><div class="h2-zoom"><img src="media/room-still.jpg" alt="Paridhi's room: a desk with a laptop, phone and photo frame beside a bookshelf"><img class="h2-night" src="media/room-night.jpg" alt="" loading="lazy">
     <button class="h2-tag lf" data-visit="laptop" style="left:32.5%;top:63%"><i></i>Work</button>
     <button class="h2-tag" data-visit="about" style="left:46.7%;top:57%"><i></i>About</button>
     <button class="h2-tag dn" data-visit="phone" style="left:19%;top:64.5%"><i></i>Contact</button>
@@ -1635,11 +1708,14 @@ body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:au
   <h1>Hi, I’m Paridhi.<br><em>UX &amp; Product Designer</em></h1>
   <p class="h2-p">I turn messy problems into simple, usable products, from research to design decisions to shipped screens.</p>
   <div class="h2-list">
-    <button class="pri" data-visit="laptop"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span><b>Case studies</b><small>Trilyt, District, Decix Lab</small></span><span class="go">›</span></button>
-    <button data-visit="about"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></span><span><b>About me</b><small>How I work and what I bring</small></span><span class="go">›</span></button>
-    <button data-visit="notebook"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M6 3v18M10 8h5M10 12h5"/></svg></span><span><b>Journey</b><small>Experience and education</small></span><span class="go">›</span></button>
-    <a id="h2Resume" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><span><b>Resume</b><small>Opens the PDF</small></span><span class="go">↗</span></a>
-    <button data-visit="phone"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span><span><b>Contact</b><small>Say hello</small></span><span class="go">›</span></button>
+    <button class="h2-feat" data-visit="laptop"><span class="tx"><small>3 projects</small><b>Case studies</b><em>Trilyt · District · Decix Lab</em></span>
+      <span class="fan"><img src="media/decix/cover.jpg" alt=""><img src="media/district/cover.jpg" alt=""><img src="media/trilyt-cover.jpg" alt=""></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
+    <div class="h2-grid">
+      <button class="h2-tile t-sage" data-visit="about"><span class="ic av"><img src="media/paridhi.jpg" alt=""></span><b>About me</b><small>How I work</small><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
+      <button class="h2-tile t-sand" data-visit="notebook"><span class="ic col"><svg viewBox="0 0 48 48"><rect x="9" y="7" width="27" height="34" rx="4" fill="#5f7356"/><rect x="13" y="7" width="23" height="34" rx="3" fill="#7b8f6e"/><rect x="17" y="13" width="14" height="3" rx="1.5" fill="#f3eee6"/><rect x="17" y="19" width="10" height="2.5" rx="1.25" fill="#dfe7d6"/><path d="M29 7h5v12l-2.5-2-2.5 2z" fill="#e0794f"/><rect x="33" y="22" width="5" height="21" rx="2" transform="rotate(28 35.5 32.5)" fill="#f2b84b"/><path d="M38.3 40.6l-2.6 4.8-.6-5.4z" fill="#2a231d"/></svg></span><b>Journey</b><small>Experience &amp; education</small><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
+      <a class="h2-tile t-sky" id="h2Resume" data-ext target="_blank" rel="noopener"><span class="ic col"><svg viewBox="0 0 48 48"><rect x="15" y="15" width="18" height="22" rx="2.5" fill="#fff" stroke="#c9d6e0" stroke-width="1.8"/><rect x="18.5" y="25" width="11" height="2" rx="1" fill="#c9d6e0"/><rect x="18.5" y="29" width="8" height="2" rx="1" fill="#c9d6e0"/><path d="M8 26v10a5 5 0 0 0 5 5h22a5 5 0 0 0 5-5V26" fill="none" stroke="#6d8fa6" stroke-width="4" stroke-linecap="round"/><path d="M24 26V5" stroke="#e0794f" stroke-width="4" stroke-linecap="round"/><path d="M16.5 12.5L24 5l7.5 7.5" fill="none" stroke="#e0794f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="10" r="2.2" fill="#f2b84b"/><circle cx="9" cy="14" r="1.6" fill="#7b8f6e"/></svg></span><b>Resume</b><small>Opens the PDF</small><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+      <button class="h2-tile t-blush" data-visit="phone"><span class="ic col"><svg viewBox="0 0 48 48"><path d="M7 25.5L41 9l-7.5 31.5-10-7.5z" fill="#e0794f"/><path d="M23.5 33L41 9 16.5 28.2z" fill="#c45c35"/><path d="M16.5 28.2l2.4 10.3 4.6-5.5z" fill="#a8492a"/><path d="M5 38c4 .5 7.5-.6 10-3" fill="none" stroke="#7b8f6e" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="1 4.2"/></svg></span><b>Contact</b><small>Say hello</small><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
+    </div>
   </div>
   <a class="h2-3d" href="?room">View my 3D room instead (best on a laptop)</a>
 </div></main>
@@ -3479,7 +3555,7 @@ function setHash(h) { try { const want = h ? '#' + h : ''; if (location.hash !==
 let suppressHash = false;
 
 function setActiveNav(key) {
-  document.querySelectorAll('.nav [data-visit], .mmenu [data-visit], .nav a[data-ext], .mmenu a[data-ext]').forEach(el => {
+  document.querySelectorAll('.nav [data-visit], .mmenu [data-visit], .nav a[data-ext], .mmenu a[data-ext], .h2-list [data-visit], .h2-list a[data-ext]').forEach(el => {
     const on = key && (el.dataset.visit === key || (key === 'poster' && el.hasAttribute('data-ext')));
     el.classList.toggle('active', !!on);
     if (on) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
@@ -3979,8 +4055,14 @@ const hr = new Date().getHours();
 let nightT = (hr >= 19 || hr < 6) ? 1 : 0, night = nightT;
 const dn = $('#dayNight');
 const setDNIcon = () => { dn.innerHTML = nightT ? SUN_ICON : MOON_ICON; dn.title = nightT ? 'Switch to day' : 'Switch to night'; };
-dn.addEventListener('click', () => { nightT = nightT ? 0 : 1; setDNIcon(); });
+dn.addEventListener('click', () => { nightT = nightT ? 0 : 1; setDNIcon(); document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT); if (ROOM2D) { document.body.classList.toggle('h2-dark', !!nightT); try { localStorage.setItem('h2-theme', nightT ? 'dark' : 'light'); } catch (e) { } } });
+if (ROOM2D) { // phones: remember the visitor's choice, otherwise follow their phone's own light/dark setting
+  let pref = null; try { pref = localStorage.getItem('h2-theme'); } catch (e) { }
+  nightT = pref ? (pref === 'dark' ? 1 : 0) : (matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0);
+  document.body.classList.toggle('h2-dark', !!nightT);
+}
 setDNIcon();
+document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT);
 
 /* hotspots */
 const EXT_SVG = '<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>';
@@ -4117,6 +4199,7 @@ addEventListener('resize', () => {
   const L = window.__load || { set() { }, finish() { } };
   if (ROOM2D) {
     $('#h2Status').textContent = 'Open to Product, UX & UI/UX Designer roles'; $('#h2Resume').href = SITE.resumePdf;
+    const hm = $('#home2d'); hm.addEventListener('scroll', () => document.body.classList.toggle('h2-scrolled', hm.scrollTop > 260), { passive: true });
     window.__roomReady = true; L.finish();
     const h0 = location.hash.slice(1); if (h0 && (HASH[h0] || h0.startsWith('case-'))) routeHash();
     return;
