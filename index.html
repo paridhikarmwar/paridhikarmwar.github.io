@@ -528,7 +528,8 @@ body.case-full .topbar,body.case-full #labels,body.case-full .hint,body.case-ful
 .fc-n.new.d:after{background:#ffe7d4}
 .fc-n.new.e{background:#ff6b35}
 .fc-lab{position:absolute;transform:translateX(-50%);font:800 10px/1 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#7a6e62;background:#fffdf9;padding:2px 4px;border-radius:4px}
-.fc-link{position:absolute;text-align:center;font-style:normal;font:800 11px/1 Manrope,sans-serif;color:#ff6b35}
+.fc-link{position:absolute;text-align:center;font-style:normal;font:800 11px/1 Manrope,sans-serif;color:#c2410c}
+body.theme-dark #panel .fc-link{color:#ff9a70}
 .fc-n.t,.fc-n.e,.fc-n.h,.fc-n.p,.fc-n.d,.fc-lab,.fc-link{opacity:0;transition:opacity .5s ease}
 .fc.in .fc-n,.fc.in .fc-lab,.fc.in .fc-link{opacity:1}
 .fc-lines path{stroke-dasharray:4000;stroke-dashoffset:4000;transition:stroke-dashoffset 2.2s ease .2s}
@@ -1500,7 +1501,7 @@ body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:au
 .h2-feat .tx{position:relative;z-index:2;max-width:56%}
 .h2-feat small{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#3e5236;background:rgba(255,255,255,.6);padding:4px 9px;border-radius:999px}
 .h2-feat b{display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:27px;line-height:1.05;margin-top:9px}
-.h2-feat em{display:block;font-style:normal;font-size:12.5px;font-weight:600;color:#55634c;margin-top:5px;line-height:1.35}
+.h2-feat em{display:block;font-style:normal;font-size:12.5px;font-weight:600;color:#45523d;margin-top:5px;line-height:1.35}
 .h2-feat .fan{position:absolute;right:-4px;bottom:-16px;width:44%;height:140px}
 .h2-feat .fan img{position:absolute;bottom:0;width:78px;height:100px;object-fit:cover;border-radius:12px;border:3px solid #fff;box-shadow:0 10px 20px -8px rgba(0,0,0,.45);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .h2-feat .fan img:nth-child(1){right:8px;transform:rotate(12deg)}
@@ -1524,7 +1525,7 @@ body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:au
 @media (max-width:350px){.h2-feat b{font-size:22px}.h2-feat .fan img{width:64px;height:84px}.h2-feat .fan img:nth-child(2){right:28px}.h2-feat .fan img:nth-child(3){right:50px}}
 body.room2d .topbar:before{content:'';position:absolute;left:-10px;right:-10px;top:-10px;height:96px;background:linear-gradient(#f3eee6 62%,rgba(243,238,230,0));opacity:0;transition:opacity .25s;pointer-events:none;z-index:-1}
 body.room2d.h2-scrolled .topbar:before{opacity:1}
-.h2-3d{display:block;margin:20px auto 0;text-align:center;font-size:13px;color:#7a6e62;text-decoration:underline;text-underline-offset:3px}
+.h2-3d{display:block;margin:20px auto 0;text-align:center;font-size:13px;color:#665b50;text-decoration:underline;text-underline-offset:3px}
 
 
 /* laptop: night mode also darkens the interface around the room (top bar, menu, tags, speech bubble) */
@@ -1648,14 +1649,9 @@ body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
 
 /* ===== dark mode for section panels (About, Work & case studies, Journey, Contact) — follows the sun/moon toggle on every device ===== */
 body.theme-dark #panel{--paper:#1c1916;--paper-2:#26221e;--ink:#f3eee6;--ink-2:#e2dad0;--muted:#a89c8f;--line:rgba(255,255,255,.12);--glass:rgba(34,30,26,.86);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+body.theme-dark #panel .ap2-num{-webkit-text-stroke-color:color-mix(in srgb,var(--k) 55%,#fff)}
+body.theme-dark #panel .ap2-key li:hover .ap2-num,body.theme-dark #panel .ap2-key li.on .ap2-num{color:color-mix(in srgb,var(--k) 55%,#fff)}
 body.theme-dark #panel img{filter:none}
-body.theme-dark #panel .scrim{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .pshot{background:rgba(255,255,255,0.18)}
-body.theme-dark #panel .pshot img{background:#454545}
-body.theme-dark #panel .pshot button{background:#2c2a26;color:#e4e2e0}
-body.theme-dark #panel .theme:hover{background:rgba(255,255,255,0.078)}
-body.theme-dark #panel .theme.on{background:#1d1d1d}
-body.theme-dark #panel .theme .sw i{border:2px solid #3d3d3d}
 body.theme-dark #panel .p-close:hover{background:#322f2a}
 body.theme-dark #panel .p-back{background:rgba(34,30,26,0.12)}
 body.theme-dark #panel .p-back:hover{background:rgba(34,30,26,0.22)}
@@ -1689,7 +1685,7 @@ body.theme-dark #panel .skill-cards span{background:#454643}
 body.theme-dark #panel .tl-dot{background:#282722}
 body.theme-dark #panel .bt figcaption{background:linear-gradient(180deg,transparent,rgba(255,255,255,0.18))}
 body.theme-dark #panel .facts2 div{background:#272117}
-body.theme-dark #panel .rot{background:#25263c;color:#e7e7e7}
+body.theme-dark #panel .rot{color:#1a1a1a;border-color:#f3eee6;box-shadow:3px 4px 0 #f3eee6}
 body.theme-dark #panel .card{background:#272117}
 body.theme-dark #panel .thumb.vid{background:#1d1d1d}
 body.theme-dark #panel .status{color:#c8d7cb;background:#252c24}
@@ -1829,8 +1825,6 @@ body.theme-dark #panel .ds-flag.yes{color:#caddd0;background:#222b25}
 body.theme-dark #panel .ds-arrow{background:#454545}
 body.theme-dark #panel .ds-stats div{background:#454545}
 body.theme-dark #panel .ds-tiers div{background:#272117}
-body.theme-dark #panel .ds-sw i{color:var(--fg,#e7e7e7)}
-body.theme-dark #panel .ds-sw i.a{background:linear-gradient(var(--sw),var(--sw)),repeating-conic-gradient(#2d2d2d 0 25%,#1d1d1d 0 50%) 0 0/10px 10px}
 body.theme-dark #panel .ds-font{background:#454545}
 body.theme-dark #panel .ds-w span{background:#454545}
 body.theme-dark #panel .status.concept{color:#beb1d3;background:#201a2c}
@@ -3405,6 +3399,56 @@ function baseFov() { const a = innerWidth / innerHeight; return a < .7 ? 74 : a 
 
 /* ------------------------------------------------------------------ UI refs */
 const bubble = $('#bubble'), labelsEl = $('#labels'), panel = $('#panel'), pBody = $('#pBody'), pTitle = $('#pTitle');
+
+/* ---- contrast guard (WCAG AA): after any section renders, and whenever light/dark changes, every text colour that falls
+   below 4.5:1 (or 3:1 for large text) against what's actually behind it is nudged lighter/darker until it passes. */
+const CG = (() => {
+  const P = s => { const m = /rgba?\(([^)]+)\)/.exec(s); if (!m) return null; const a = m[1].split(/[ ,/]+/).filter(Boolean).map(parseFloat); return [a[0], a[1], a[2], a.length > 3 ? a[3] : 1]; };
+  const lin = v => (v /= 255) <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4);
+  const lum = c => .2126 * lin(c[0]) + .7152 * lin(c[1]) + .0722 * lin(c[2]);
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const mix = (t, b) => [t[0] * t[3] + b[0] * (1 - t[3]), t[1] * t[3] + b[1] * (1 - t[3]), t[2] * t[3] + b[2] * (1 - t[3]), 1];
+  const toHsl = ([r, g, b]) => { r /= 255; g /= 255; b /= 255; const mx = Math.max(r, g, b), mn = Math.min(r, g, b); let h = 0, s = 0; const l = (mx + mn) / 2; if (mx !== mn) { const d = mx - mn; s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h /= 6; } return [h, s, l]; };
+  const fromHsl = (h, s, l) => { if (!s) return [l * 255, l * 255, l * 255]; const q = l < .5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q; const f = t => { t = (t + 1) % 1; return 255 * (t < 1 / 6 ? p + (q - p) * 6 * t : t < .5 ? q : t < 2 / 3 ? p + (q - p) * (2 / 3 - t) * 6 : p); }; return [f(h + 1 / 3), f(h), f(h - 1 / 3)]; };
+  function backs(el) {
+    const layers = []; let e = el;
+    while (e && e.nodeType === 1) {
+      const cs = getComputedStyle(e);
+      if (cs.backgroundImage !== 'none') { if (cs.backgroundImage.includes('url(')) return null; const g = cs.backgroundImage.match(/rgba?\([^)]+\)/g); if (g) layers.push(g.map(P)); }
+      const c = P(cs.backgroundColor); if (c && c[3] > 0) { layers.push([c]); if (c[3] > .99) break; }
+      e = e.parentElement;
+    }
+    let out = [document.body.classList.contains('theme-dark') ? [28, 25, 22, 1] : [246, 240, 231, 1]];
+    for (let i = layers.length - 1; i >= 0; i--) out = layers[i].flatMap(t => out.map(b => mix(t, b)));
+    return out;
+  }
+  function fixEl(el) {
+    const cs = getComputedStyle(el); const fg = P(cs.color); if (!fg) return;
+    if (fg[3] < .4 || parseFloat(cs.opacity) < .4) return;             // faint watermark numerals and ghost text are decoration, not content
+    const bs = backs(el); if (!bs) return;                       // text sitting on a photo/screenshot: leave it
+    const size = parseFloat(cs.fontSize), large = size >= 24 || (size >= 18.66 && +cs.fontWeight >= 700), need = (large ? 3 : 4.5) + .1;
+    const worst = c => Math.min(...bs.map(b => ratio(mix(c, b), b)));
+    if (worst(fg) >= need) return;
+    const avgL = bs.reduce((a, b) => a + lum(b), 0) / bs.length, first = avgL < .25 ? 1 : -1;
+    const [h, sat, l0] = toHsl(fg), a = Math.max(fg[3], .85);
+    const tryDir = dir => { let l = l0, c = fg; for (let i = 0; i < 42; i++) { l = Math.min(1, Math.max(0, l + dir * .025)); c = [...fromHsl(h, sat, l), a]; if (worst(c) >= need) return c; } return null; };
+    let c = tryDir(first) || tryDir(-first);
+    if (!c) { const W = [255, 255, 255, 1], B = [20, 18, 16, 1]; c = worst(W) > worst(B) ? W : B; }
+    el.style.setProperty('color', `rgba(${c.map((v, i) => i < 3 ? Math.round(v) : +v.toFixed(2)).join(',')})`, 'important');
+    el.dataset.cg = '1';
+  }
+  function run(root = pBody) {
+    if (!root) return;
+    root.querySelectorAll('[data-cg]').forEach(e => { e.style.removeProperty('color'); delete e.dataset.cg; });
+    const seen = new Set(), w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) { const t = w.currentNode; if (!t.textContent.trim()) continue; const el = t.parentElement; if (!el || seen.has(el)) continue; seen.add(el); if (el.closest('[aria-hidden="true"]')) continue; try { fixEl(el); } catch (e) { } }
+  }
+  let q = 0; const schedule = () => { cancelAnimationFrame(q); q = requestAnimationFrame(() => setTimeout(() => run(), 60)); };
+  return { run, schedule };
+})();
+new MutationObserver(CG.schedule).observe(pBody, { childList: true, subtree: true });
+let cgDark = document.body.classList.contains('theme-dark');
+new MutationObserver(() => { const d = document.body.classList.contains('theme-dark'); if (d !== cgDark) { cgDark = d; CG.schedule(); } }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 const hotspots = {};
 let composer = null;
 let MAT = null;
