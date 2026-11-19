@@ -164,7 +164,9 @@ body.photo .pbar{display:flex}
 /* panel */
 #panel{position:fixed;top:16px;right:16px;bottom:16px;width:min(680px,54vw);z-index:8;background:var(--paper);border-radius:22px;box-shadow:0 30px 80px rgba(10,6,3,.45);display:flex;flex-direction:column;overflow:hidden;transform:translateX(calc(100% + 40px));transition:transform .65s cubic-bezier(.2,.8,.2,1);visibility:hidden}
 #panel.open{transform:none;visibility:visible}
-#panel{transition:transform .65s cubic-bezier(.2,.8,.2,1),width .55s cubic-bezier(.2,.8,.2,1),top .55s cubic-bezier(.2,.8,.2,1),right .55s cubic-bezier(.2,.8,.2,1),bottom .55s cubic-bezier(.2,.8,.2,1),border-radius .55s,height .55s cubic-bezier(.2,.8,.2,1)}
+#panel{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.p-body.swap{animation:pSwap .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pSwap{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 #panel.full{top:0!important;right:0!important;bottom:0!important;width:100vw!important;border-radius:0!important;z-index:9}
 #panel.full .p-body{padding:0 40px 80px}
 .case-wrap{max-width:1080px;margin:0 auto}
@@ -352,7 +354,8 @@ body.case-full .topbar,body.case-full #labels,body.case-full .hint,body.case-ful
   .beyond{grid-template-columns:1fr 1fr}
   .bt{grid-column:span 1;aspect-ratio:1}
 }
-.facts2{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:14px}
+.facts2 div:nth-child(3){grid-column:1/-1}
+.facts2{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:14px}
 .facts2 div{background:#fffdf9;padding:13px 14px}
 .facts2 b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .facts2 span{font-size:14px;font-weight:600}
@@ -1455,6 +1458,9 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
 #loader .pct sup{font-size:22px;margin-left:2px;color:#a9b39c}
 #loader .track{height:2px;background:rgba(255,255,255,.12);margin:18px auto 0;border-radius:2px;overflow:hidden}
 #loader .track i{display:block;height:100%;width:0;background:#a9b39c}
+#loader .track{position:relative}
+#loader .track:after{content:'';position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:ldShim 1.4s linear infinite;will-change:transform}
+@keyframes ldShim{from{transform:translateX(-100%)}to{transform:translateX(340%)}}
 #loader .stage{font-size:11.5px;color:#8d927f;margin-top:12px;min-height:16px;font-weight:600}
 #err{display:none;margin-top:18px;font-size:13px;color:#e9b3a0;max-width:300px;line-height:1.5}
 
@@ -1558,7 +1564,7 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
 })();
 </script>
 <script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}
 </script>
 </head>
 <body>
@@ -1622,7 +1628,7 @@ const SITE = {
   linkedin: 'https://www.linkedin.com/in/paridhi-karmwar',
   resumePdf: 'https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link', // Resume buttons open this
   logos: { email: '', linkedin: '' }, // e.g. 'media/tools/gmail.png' — shown in the chat's links card
-  status: 'Open to full-time product design roles',
+  status: 'Open to Product Designer, UX Designer and UI/UX Designer roles',
 };
 
 const CASES = [
@@ -2206,7 +2212,7 @@ const ABOUT = {
     ['Design for everyone', 'Accessibility is part of the brief, not a final checklist.'],
     ['Measure what matters', 'I define success up front and check it after launch.'],
   ],
-  facts: [['Based in', 'India'], ['Currently', 'Open to product design roles'], ['Favourite tool', 'A pencil, then Figma']],
+  facts: [['Based in', 'India'], ['Favourite tool', 'A pencil, then Figma'], ['Open to', 'Product Designer, UX Designer and UI/UX Designer roles']],
   process: [
     ['Discover', 'Interviews, field visits and audits to understand people and the real problem.'],
     ['Define', 'Turn findings into a clear problem statement, user flows and success metrics.'],
@@ -2261,13 +2267,16 @@ try {
   $('#err').textContent = 'The 3D room couldn’t start in this browser.'; window.__load && window.__load.finish();
   throw e;
 }
-renderer.setPixelRatio(Math.min(devicePixelRatio, isNarrow() ? 1.75 : 2));
+const LITE = coarse || isNarrow(); // phones & tablets: lighter rendering so the room moves smoothly
+renderer.setPixelRatio(Math.min(devicePixelRatio, LITE ? 1.25 : 1.5));
+canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); const er = $('#err'); if (er) { er.style.display = 'block'; er.textContent = 'This phone had trouble drawing the 3D room. Use the menu to browse my work, or reload the page.'; } window.__load && window.__load.finish(); });
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+if (LITE) renderer.shadowMap.autoUpdate = false; // the sun doesn't move, so phones redraw shadows only every few frames
 const maxAniso = renderer.capabilities.getMaxAnisotropy();
 
 const scene = new THREE.Scene();
@@ -2278,9 +2287,11 @@ scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 scene.environmentIntensity = 0.5;
 
 /* ------------------------------------------------------------------ texture helpers */
+// phones and tablets get half-resolution room textures: they look the same at that screen size and build ~4x faster
+const TEX_S = (coarse || isNarrow()) ? .5 : 1;
 function canvasTex(w, h, draw, { repeat = [1, 1], srgb = true } = {}) {
-  const c = document.createElement('canvas'); c.width = w; c.height = h;
-  const g = c.getContext('2d'); draw(g, w, h);
+  const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w * TEX_S)); c.height = Math.max(1, Math.round(h * TEX_S));
+  const g = c.getContext('2d'); if (TEX_S !== 1) g.scale(TEX_S, TEX_S); draw(g, w, h);
   const t = new THREE.CanvasTexture(c);
   if (srgb) t.colorSpace = THREE.SRGBColorSpace;
   t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(repeat[0], repeat[1]);
@@ -2288,7 +2299,7 @@ function canvasTex(w, h, draw, { repeat = [1, 1], srgb = true } = {}) {
   return t;
 }
 function noise(g, W, H, a = .04, n = null) {
-  const count = n || (W * H / 38);
+  const count = (n || (W * H / 38)) * TEX_S * TEX_S;
   for (let i = 0; i < count; i++) {
     g.fillStyle = R() < .5 ? `rgba(0,0,0,${R() * a})` : `rgba(255,255,255,${R() * a})`;
     const s = R() < .85 ? 1 : 2; g.fillRect(R() * W, R() * H, s, s);
@@ -2426,7 +2437,7 @@ function screenTex() {
   return t;
 }
 function drawScreenVideo(now) {
-  const s = screenVid; if (!s.rects.length || now - s.last < 40) return;
+  const s = screenVid; if (!s.rects.length || now - s.last < (LITE ? 100 : 40)) return;
   s.last = now;
   const g = s.canvas.getContext('2d');
   let drew = false;
@@ -3426,8 +3437,9 @@ function openPanel(key, caseId) {
   updateShift();
   setTimeout(() => pBody.focus({ preventScroll: true }), 300);
 }
+function swapIn() { pBody.classList.remove('swap'); void pBody.offsetWidth; pBody.classList.add('swap'); }
 function setFull(on) {
-  panel.classList.toggle('full', !!on);
+  panel.classList.toggle('full', !!on); swapIn();
   document.body.classList.toggle('case-full', !!on);
   updateShift();
 }
@@ -3762,7 +3774,7 @@ function openResume() {
   say(`Opening my resume in a new tab… <a class="ca-send" href="${esc(SITE.resumePdf)}" target="_blank" rel="noopener">Open resume PDF ${EXT_SVG}</a>`, { who: 'Resume', ms: 7000 });
 }
 function visit(key, { fast = false, caseId = null } = {}) {
-  if (key === 'poster' && SITE.resumePdf && !fast) { openResume(); return; }
+  if (key === 'poster' && SITE.resumePdf) { openResume(); return; } // always the real PDF, never the built-in sample resume
   const o = OBJ[key]; if (!o) return;
   const token = ++visitToken; tourOn = false; clearTimeout(tourTimer);
   if (panelKey) closePanel(false);
@@ -3773,10 +3785,10 @@ function visit(key, { fast = false, caseId = null } = {}) {
   let p = o.cam.pos.clone(); const l = o.cam.look.clone();
   if (innerWidth / innerHeight < .8) p = l.clone().add(p.clone().sub(l).multiplyScalar(1.35));
   const dist = cam.pos.distanceTo(p);
-  camFly(p, l, fast || reduceMotion ? .7 : clamp(1.1 + dist * .25, 1.3, 2.2), () => {
+  camFly(p, l, fast || reduceMotion ? .6 : clamp(.85 + dist * .16, 1.0, 1.5), () => {
     if (token !== visitToken) return;
     cam.mode = 'focus'; setObjOpen(key, true);
-    setTimeout(() => { if (token === visitToken) openPanel(key, caseId); }, fast ? 250 : 650);
+    setTimeout(() => { if (token === visitToken) openPanel(key, caseId); }, fast ? 150 : 280);
   });
 }
 let tourTimer = 0;
@@ -3977,8 +3989,9 @@ addEventListener('hashchange', routeHash);
 const tmpV = new THREE.Vector3();
 function project(v) { tmpV.copy(v).project(camera); return { x: (tmpV.x + 1) / 2 * innerWidth, y: (1 - tmpV.y) / 2 * innerHeight, vis: tmpV.z < 1 && Math.abs(tmpV.x) < 1.05 && Math.abs(tmpV.y) < 1.05 }; }
 let last = performance.now(), elapsed = 0;
+let shadowTick = 7;
 function frame(now) {
-  const dt = Math.min(.05, (now - last) / 1000); last = now; elapsed += dt;
+  const dt = Math.min(.1, (now - last) / 1000); last = now; elapsed += dt;
   // tweens
   for (let i = tweens.length - 1; i >= 0; i--) { const tw = tweens[i]; if (tw.dead) { tweens.splice(i, 1); continue; } tw.t += dt; const k = Math.min(1, tw.t / tw.dur); tw.fn(k); if (k >= 1) { tweens.splice(i, 1); tw.done && tw.done(); } }
   // camera
@@ -3998,7 +4011,8 @@ function frame(now) {
   const ko = 1 - Math.exp(-dt * 3.2);
   anim.lid.rotation.x = lerp(anim.lid.rotation.x, objOpen.laptop ? -.3 : 1.38, ko);
   anim.screenMat.emissiveIntensity = lerp(anim.screenMat.emissiveIntensity, objOpen.laptop ? 1.05 : .25, ko);
-  drawScreenVideo(now);
+  const covered = !!panelKey && panel.classList.contains('full') && panel.classList.contains('open');
+  if (!covered) drawScreenVideo(now);
   anim.cover.rotation.z = lerp(anim.cover.rotation.z, objOpen.notebook ? 3.0 : 0, 1 - Math.exp(-dt * 3.6));
   anim.phoneScreen.emissiveIntensity = lerp(anim.phoneScreen.emissiveIntensity, objOpen.phone ? 1 : .06 + (Math.sin(elapsed * 2) > .97 ? .3 : 0), 1 - Math.exp(-dt * 6));
   if (buzzT > 0) { buzzT -= dt; anim.phone.rotation.y = anim.phoneRot + Math.sin(elapsed * 95) * .035 * (buzzT / .7); } else anim.phone.rotation.y = anim.phoneRot;
@@ -4025,6 +4039,8 @@ function frame(now) {
     if (p.vis) b.style.transform = `translate(${p.x}px,${p.y}px) translate(-50%,-50%)`;
   }
   if (bubble.classList.contains('show')) { bubble.classList.add('docked'); bubble.style.left = (innerWidth - bubble.offsetWidth) / 2 + 'px'; bubble.style.top = 'auto'; bubble.style.bottom = '64px'; }
+  if (LITE) { shadowTick = (shadowTick + 1) % 8; renderer.shadowMap.needsUpdate = shadowTick === 0; }
+  if (covered) { requestAnimationFrame(frame); return; }
   if (composer) { try { composer.render(dt); } catch (e) { console.warn('AO disabled', e); composer = null; renderer.render(scene, camera); } }
   else renderer.render(scene, camera);
   requestAnimationFrame(frame);
@@ -4055,14 +4071,14 @@ addEventListener('resize', () => {
   cam.yaw = cam.tYaw = startYaw; cam.pitch = cam.tPitch = -.14;
   cam.pos.set(1.1, 1.7, 2.6); cam.look.copy(HOME).add(dirOf(startYaw, -.14));
   L.set(90, 'Turning on the lights'); await nextFrame();
-  renderer.compile(scene, camera);
+  try { if (renderer.compileAsync) await renderer.compileAsync(scene, camera); else renderer.compile(scene, camera); } catch (e) { renderer.compile(scene, camera); }
   if (!isNarrow() && !coarse) {
     try {
       const rt = new THREE.WebGLRenderTarget(innerWidth * renderer.getPixelRatio(), innerHeight * renderer.getPixelRatio(), { type: THREE.HalfFloatType, samples: 4 });
       composer = new EffectComposer(renderer, rt);
       composer.addPass(new RenderPass(scene, camera));
       const ao = new GTAOPass(scene, camera, innerWidth, innerHeight);
-      ao.updateGtaoMaterial({ radius: .35, distanceExponent: 1.5, thickness: 1, scale: 1.1, samples: 16 });
+      ao.updateGtaoMaterial({ radius: .35, distanceExponent: 1.5, thickness: 1, scale: 1.1, samples: 8 });
       ao.blendIntensity = .9;
       composer.addPass(ao);
       composer.addPass(new OutputPass());
