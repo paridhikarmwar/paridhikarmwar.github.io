@@ -1469,8 +1469,21 @@ form.cf button{border:0;background:var(--ink);color:var(--paper);border-radius:9
 #home2d{display:none}
 body.room2d #scene,body.room2d .vignette,body.room2d .grain,body.room2d #photoBtn,body.room2d #dayNight,body.room2d [data-tour],body.room2d #hint,body.room2d #labels,body.room2d #bubble{display:none!important}
 body.room2d{background:#f3eee6}
-body.room2d #home2d{display:flex;position:fixed;inset:0;z-index:2;overflow-y:auto;flex-direction:column;padding:92px 22px calc(28px + env(safe-area-inset-bottom));background:radial-gradient(120% 60% at 50% 0%,#e6ecdf 0%,#f3eee6 60%)}
-.h2-in{width:100%;max-width:440px;margin:auto;animation:pSwap .5s cubic-bezier(.2,.8,.2,1) both}
+body.room2d #home2d{display:block;position:fixed;inset:0;z-index:2;overflow-y:auto;background:#f3eee6;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.h2-hero{position:relative;overflow:hidden;aspect-ratio:800/792;width:100%}
+.h2-zoom{position:absolute;inset:0;transform-origin:40% 60%;animation:h2kb 18s ease-in-out infinite alternate}
+@keyframes h2kb{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.h2-zoom img{width:100%;height:100%;object-fit:cover;display:block}
+.h2-hero:after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(rgba(243,238,230,0),#f3eee6);pointer-events:none}
+.h2-tag{position:absolute;z-index:2;display:flex;align-items:center;gap:6px;transform:translate(-11px,-50%);background:rgba(255,253,249,.94);border:0;border-radius:999px;padding:6px 11px 6px 6px;font:800 12.5px Manrope,system-ui,sans-serif;color:#2a231d;box-shadow:0 6px 16px -6px rgba(0,0,0,.4);cursor:pointer;animation:h2pop .6s cubic-bezier(.2,1.4,.4,1) both}
+.h2-tag.dn{transform:translate(-11px,85%)}
+.h2-tag.lf{flex-direction:row-reverse;padding:6px 6px 6px 11px;transform:translate(calc(-100% + 11px),-50%)}
+.h2-tag:nth-of-type(2){animation-delay:.25s}.h2-tag:nth-of-type(3){animation-delay:.5s}.h2-tag:nth-of-type(4){animation-delay:.75s}
+.h2-tag i{width:10px;height:10px;border-radius:50%;background:#5f7356;animation:h2ping 1.8s infinite}
+@keyframes h2ping{0%{box-shadow:0 0 0 0 rgba(95,115,86,.65)}70%,100%{box-shadow:0 0 0 9px rgba(95,115,86,0)}}
+@keyframes h2pop{from{opacity:0;scale:.6}}
+.h2-tip{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);white-space:nowrap;font-size:11.5px;font-weight:700;color:#5c5249;background:rgba(255,253,249,.82);padding:5px 11px;border-radius:999px}
+.h2-in{width:100%;max-width:440px;margin:-6px auto 0;padding:0 22px;position:relative;z-index:2;animation:pSwap .5s cubic-bezier(.2,.8,.2,1) both}
 .h2-av{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 10px 26px rgba(40,30,20,.18)}
 .h2-st{display:inline-flex;align-items:center;gap:7px;margin-top:0;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2f6b3a;background:#e2f1df;border-radius:999px;padding:7px 12px;line-height:1.3}
 .h2-st i{width:7px;height:7px;flex:none;border-radius:50%;background:#3fae55;box-shadow:0 0 0 3px rgba(63,174,85,.2)}
@@ -1610,7 +1623,14 @@ body.room2d #home2d{display:flex;position:fixed;inset:0;z-index:2;overflow-y:aut
   <nav class="mmenu" id="mmenu" aria-label="Menu"><button data-visit="about"><b>About</b></button><button data-visit="laptop"><b>Work</b></button><button data-visit="notebook"><b>Journey</b></button><a href="https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link" target="_blank" rel="noopener" data-ext><b>Resume</b><span class="arrow"><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></span></a><button data-visit="phone"><b>Contact</b></button><button class="tour" data-tour><b>Take a tour</b></button></nav>
 </header>
 
-<main id="home2d" aria-label="Paridhi — portfolio"><div class="h2-in">
+<main id="home2d" aria-label="Paridhi — portfolio">
+  <div class="h2-hero"><div class="h2-zoom"><img src="media/room-still.jpg" alt="Paridhi's room: a desk with a laptop, phone and photo frame beside a bookshelf">
+    <button class="h2-tag lf" data-visit="laptop" style="left:32.5%;top:63%"><i></i>Work</button>
+    <button class="h2-tag" data-visit="about" style="left:46.7%;top:57%"><i></i>About</button>
+    <button class="h2-tag dn" data-visit="phone" style="left:19%;top:64.5%"><i></i>Contact</button>
+    <button class="h2-tag" data-visit="notebook" style="left:66%;top:33%"><i></i>Journey</button>
+  </div><span class="h2-tip">Tap the glowing tags in my room</span></div>
+  <div class="h2-in">
   <div><span class="h2-st"><i></i><span id="h2Status"></span></span></div>
   <h1>Hi, I’m Paridhi.<br><em>UX &amp; Product Designer</em></h1>
   <p class="h2-p">I turn messy problems into simple, usable products, from research to design decisions to shipped screens.</p>
@@ -4096,7 +4116,7 @@ addEventListener('resize', () => {
 (async function boot() {
   const L = window.__load || { set() { }, finish() { } };
   if (ROOM2D) {
-    $('#h2Status').textContent = SITE.status; $('#h2Resume').href = SITE.resumePdf;
+    $('#h2Status').textContent = 'Open to Product, UX & UI/UX Designer roles'; $('#h2Resume').href = SITE.resumePdf;
     window.__roomReady = true; L.finish();
     const h0 = location.hash.slice(1); if (h0 && (HASH[h0] || h0.startsWith('case-'))) routeHash();
     return;
