@@ -2276,7 +2276,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-if (LITE) renderer.shadowMap.autoUpdate = false; // the sun doesn't move, so phones redraw shadows only every few frames
+if (LITE) renderer.shadowMap.enabled = false; // phones: no real-time shadows, which keeps swiping smooth
 const maxAniso = renderer.capabilities.getMaxAnisotropy();
 
 const scene = new THREE.Scene();
@@ -2937,7 +2937,8 @@ function buildRoom() {
   sun.shadow.bias = -.0004; sun.shadow.normalBias = .03;
   lights.sun = sun;
   lights.fill = new THREE.DirectionalLight(0xdfe8ef, .25); lights.fill.position.set(5, 3, .5); scene.add(lights.fill);
-  const rect = (col, inten, w2, h2, pos, look) => { const l = new THREE.RectAreaLight(col, inten, w2, h2); l.position.set(...pos); l.lookAt(...look); scene.add(l); return l; };
+  // area lights are the most expensive thing to draw; phones skip them (the room's base lighting still carries the look)
+  const rect = (col, inten, w2, h2, pos, look) => { const l = new THREE.RectAreaLight(col, inten, w2, h2); l.position.set(...pos); l.lookAt(...look); if (!LITE) scene.add(l); return l; };
   lights.win = rect(0xe9f0f6, 3.2, ww, wh, [2.97, wyc, wc], [0, wyc - .2, wc]);
   lights.cab = rect(0xffd2a0, 6, cw - .05, .05, [cx, H - cabH - .01, ZW + cabD - .03], [cx, 0, ZW + cabD - .03]);
   lights.desk = rect(0xffd2a0, 6, cw - .05, .04, [cx, shY - .026, ZW + .2], [cx, 0, ZW + .14]);
@@ -3989,7 +3990,6 @@ addEventListener('hashchange', routeHash);
 const tmpV = new THREE.Vector3();
 function project(v) { tmpV.copy(v).project(camera); return { x: (tmpV.x + 1) / 2 * innerWidth, y: (1 - tmpV.y) / 2 * innerHeight, vis: tmpV.z < 1 && Math.abs(tmpV.x) < 1.05 && Math.abs(tmpV.y) < 1.05 }; }
 let last = performance.now(), elapsed = 0;
-let shadowTick = 7;
 function frame(now) {
   const dt = Math.min(.1, (now - last) / 1000); last = now; elapsed += dt;
   // tweens
@@ -4025,7 +4025,7 @@ function frame(now) {
   night = lerp(night, nightT, 1 - Math.exp(-dt * 2.5));
   lights.sun.intensity = lerp(2.8, .2, night); lights.sun.color.setRGB(lerp(1, .62, night), lerp(.86, .7, night), lerp(.68, .95, night));
   lights.fill.intensity = lerp(.25, .04, night); lights.hemi.intensity = lerp(.45, .08, night);
-  scene.environmentIntensity = lerp(.5, .12, night);
+  scene.environmentIntensity = lerp(LITE ? .78 : .5, .12, night);
   lights.cab.intensity = lights.desk.intensity = lerp(5, 8, night); lights.bedLed.intensity = lerp(2.5, 5, night); lights.win.intensity = lerp(3.2, .12, night); lights.floor.intensity = lerp(1.2, 5, night); lights.pendant.intensity = lerp(2, 6, night); lights.night.intensity = lerp(.4, 1.8, night);
   anim.sky.skyD.opacity = 1 - night; anim.sky.skyN.opacity = night;
   renderer.toneMappingExposure = lerp(1.0, 1.12, night);
@@ -4039,7 +4039,6 @@ function frame(now) {
     if (p.vis) b.style.transform = `translate(${p.x}px,${p.y}px) translate(-50%,-50%)`;
   }
   if (bubble.classList.contains('show')) { bubble.classList.add('docked'); bubble.style.left = (innerWidth - bubble.offsetWidth) / 2 + 'px'; bubble.style.top = 'auto'; bubble.style.bottom = '64px'; }
-  if (LITE) { shadowTick = (shadowTick + 1) % 8; renderer.shadowMap.needsUpdate = shadowTick === 0; }
   if (covered) { requestAnimationFrame(frame); return; }
   if (composer) { try { composer.render(dt); } catch (e) { console.warn('AO disabled', e); composer = null; renderer.render(scene, camera); } }
   else renderer.render(scene, camera);
