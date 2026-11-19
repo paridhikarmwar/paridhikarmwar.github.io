@@ -978,7 +978,7 @@ body.case-full .topbar,body.case-full #labels,body.case-full .hint,body.case-ful
 /* ===== District case: extra section types ===== */
 .status.concept{color:#5b21b6;background:#efe6ff}
 .status.concept i{background:#7a2cf0}
-.ch-note{display:flex;gap:10px;align-items:flex-start;max-width:820px;margin:18px 0 0!important;padding:14px 18px;border-radius:14px;background:#f1eafc;border:1px solid #dccbfa;color:#3d2470!important;font-size:15px!important;line-height:1.55!important}
+.ch-note{display:flex;gap:10px;align-items:flex-start;max-width:none;width:100%;box-sizing:border-box;margin:18px 0 0!important;padding:14px 18px;border-radius:14px;background:#f1eafc;border:1px solid #dccbfa;color:#3d2470!important;font-size:15px!important;line-height:1.55!important}
 .ch-note svg{flex:0 0 20px;width:20px;height:20px;margin-top:1px;color:#7a2cf0}
 .dz-anim{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .dz-anim.in{opacity:1;transform:none}
@@ -1645,6 +1645,282 @@ body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
   .menu-btn .ln{width:16px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.clickfx{display:none}}
+
+/* ===== dark mode for section panels (About, Work & case studies, Journey, Contact) — follows the sun/moon toggle on every device ===== */
+body.theme-dark #panel{--paper:#1c1916;--paper-2:#26221e;--ink:#f3eee6;--ink-2:#e2dad0;--muted:#a89c8f;--line:rgba(255,255,255,.12);--glass:rgba(34,30,26,.86);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+body.theme-dark #panel img{filter:none}
+body.theme-dark #panel .scrim{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .pshot{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .pshot img{background:#454545}
+body.theme-dark #panel .pshot button{background:#2c2a26;color:#e4e2e0}
+body.theme-dark #panel .theme:hover{background:rgba(255,255,255,0.078)}
+body.theme-dark #panel .theme.on{background:#1d1d1d}
+body.theme-dark #panel .theme .sw i{border:2px solid #3d3d3d}
+body.theme-dark #panel .p-close:hover{background:#322f2a}
+body.theme-dark #panel .p-back{background:rgba(34,30,26,0.12)}
+body.theme-dark #panel .p-back:hover{background:rgba(34,30,26,0.22)}
+body.theme-dark #panel.skin-work .p-head{background:#474542}
+body.theme-dark #panel.skin-journey .p-body{background-color:#29251d}
+body.theme-dark #panel .jt-sub{color:#c3c1be}
+body.theme-dark #panel .jr-yr{color:rgba(228,226,224,0.18)}
+body.theme-dark #panel .jr-card{background:#272217}
+body.theme-dark #panel .jt-cta{color:#d6d1cd!important}
+body.theme-dark #panel .jt-cta a{color:#ccb4a8}
+body.theme-dark #panel.skin-contact .p-body{background:#2d2b26}
+body.theme-dark #panel .ca-x{background:rgba(34,30,26,0.14)}
+body.theme-dark #panel .ca-x:hover{background:rgba(34,30,26,0.24)}
+body.theme-dark #panel .ca-day small{color:#c5c4c2;background:rgba(34,30,26,0.75)}
+body.theme-dark #panel .cb{color:#e7e6e5;background:#1d1d1d}
+body.theme-dark #panel .cm.out .cb{background:#2b3128}
+body.theme-dark #panel .ca-links{border:1px solid rgba(255,255,255,0.1)}
+body.theme-dark #panel .cl{background:#24211e;border-bottom:1px solid rgba(255,255,255,0.1)}
+body.theme-dark #panel .cl:hover{background:#292623}
+body.theme-dark #panel .cl .ic-img{background:#1d1d1d}
+body.theme-dark #panel .cl-go{color:#cacfc8}
+body.theme-dark #panel .ca-quick button{background:rgba(34,30,26,0.85);color:#d3d8d2}
+body.theme-dark #panel .ca-compose{background:#322f2b}
+body.theme-dark #panel .ca-compose input{background:#1d1d1d}
+body.theme-dark #panel .ca-note{color:#c5c4c2}
+body.theme-dark #panel.skin-resume .p-body{background:#2b2924}
+body.theme-dark #panel.skin-about .p-body{background:#282722}
+body.theme-dark #panel .ab-card{background:#272117}
+body.theme-dark #panel .xp{background:#454643}
+body.theme-dark #panel .skill-cards span{background:#454643}
+body.theme-dark #panel .tl-dot{background:#282722}
+body.theme-dark #panel .bt figcaption{background:linear-gradient(180deg,transparent,rgba(255,255,255,0.18))}
+body.theme-dark #panel .facts2 div{background:#272117}
+body.theme-dark #panel .rot{background:#25263c;color:#e7e7e7}
+body.theme-dark #panel .card{background:#272117}
+body.theme-dark #panel .thumb.vid{background:#1d1d1d}
+body.theme-dark #panel .status{color:#c8d7cb;background:#252c24}
+body.theme-dark #panel .eye-div:before{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .eye-pill{background:#2b2a27}
+body.theme-dark #panel .eye-txt{color:#d4d3d2}
+body.theme-dark #panel .eyes i{background:#1d1d1d}
+body.theme-dark #panel .eyes i b:after{background:#1d1d1d}
+body.theme-dark #panel .ap2-lead mark{color:#d9c0b3}
+body.theme-dark #panel .au.good .au-dot{background:radial-gradient(circle at 35% 30%,#555,#454545 65%)}
+body.theme-dark #panel .au.good .au-red{color:#e9e9e9;background:linear-gradient(transparent 60%,#463e29 60%)}
+body.theme-dark #panel .au.good .au-num{background:#454545}
+body.theme-dark #panel .au.good .au-head h4{background-image:linear-gradient(#454545,#454545)}
+body.theme-dark #panel .au-fix{color:#caddd0;background:#222b25}
+body.theme-dark #panel .au-cap{background:#454545}
+body.theme-dark #panel .rd-n{background:#454545}
+body.theme-dark #panel .fc-wrap{background:#272117}
+body.theme-dark #panel .fc-n.t, body.theme-dark #panel .fc-n.e{background:#454545}
+body.theme-dark #panel .fc-n.p{background:#1d1d1d;border:1.5px solid #403e3b}
+body.theme-dark #panel .fc-n.hub{background:#282622}
+body.theme-dark #panel .fc-n.h{background:#454545}
+body.theme-dark #panel .fc-n.d:after{background:#34301f}
+body.theme-dark #panel .fc-n.new.p{background:#2c221a;color:#d7c0b6}
+body.theme-dark #panel .fc-n.new.d:after{background:#31261d}
+body.theme-dark #panel .fc-lab{color:#c3c1be;background:#272117}
+body.theme-dark #panel .uf-key .k-t{background:#454545}
+body.theme-dark #panel .uf-key .k-p{background:#1d1d1d}
+body.theme-dark #panel .uf-key .k-d{background:#34301f}
+body.theme-dark #panel .ia{background:#272117}
+body.theme-dark #panel .ia-root span{background:#454545}
+body.theme-dark #panel .ia-root:after{background:#454545}
+body.theme-dark #panel .ia-cols:before{background:#454545}
+body.theme-dark #panel .ia-col:before{background:#454545}
+body.theme-dark #panel .ia-tab{background:#454545}
+body.theme-dark #panel .ia-ic{background:rgba(34,30,26,0.12)}
+body.theme-dark #panel .ia-l2:before{background:#373532}
+body.theme-dark #panel .ia-l2>li{background:#282622}
+body.theme-dark #panel .ia-l2>li:before{background:#373532}
+body.theme-dark #panel .ia-l2>li.new{background:#31261d}
+body.theme-dark #panel .ia-l3{border-left:1.5px dashed #403e3b}
+body.theme-dark #panel .uf-key .k-l1{background:#454545}
+body.theme-dark #panel .uf-key .k-l2{background:#282622}
+body.theme-dark #panel .uf-key .k-l3{border-left:2px dashed #403e3b}
+body.theme-dark #panel .uf-key .k-new{background:#31261d}
+body.theme-dark #panel .uf{background:#272117}
+body.theme-dark #panel .uf-s{background:#454545}
+body.theme-dark #panel .uf-s.last{background:#1d1d1d}
+body.theme-dark #panel .uf-trunk{background:#454545}
+body.theme-dark #panel .uf-start .uf-arr{background:#454545}
+body.theme-dark #panel .uf-lane{background:#282520}
+body.theme-dark #panel .uf-lane.new{background:linear-gradient(135deg,#2c221a,#31261d)}
+body.theme-dark #panel .uf-ic{background:#454545}
+body.theme-dark #panel .uf-node{background:#1d1d1d}
+body.theme-dark #panel .uf-node li{background:#282622}
+body.theme-dark #panel .uf-node li.star{background:#31261d;color:#d7c0b6}
+body.theme-dark #panel .uf-node.end{background:#454545}
+body.theme-dark #panel .uf-node.end li{background:#454545}
+body.theme-dark #panel .uf-key .k-new{background:#31261d}
+body.theme-dark #panel .uf-key .k-end{background:#454545}
+body.theme-dark #panel .ty-btn{background:#454545}
+body.theme-dark #panel .ty-btn:hover{background:#454545}
+body.theme-dark #panel .wh-orb i{background:#1d1d1d}
+body.theme-dark #panel .pd2-pin{color:#dfe4eb}
+body.theme-dark #panel .pd2-heard{background:#272117}
+body.theme-dark #panel .pd2-heard span{color:#a6b1ce}
+body.theme-dark #panel .pd2-moves li{background:#272117}
+body.theme-dark #panel .pd2-moves li.hot{background:#1c2820}
+body.theme-dark #panel .pd2-moves i{color:#dfe4eb}
+body.theme-dark #panel .pd2-pr{background:linear-gradient(135deg,#1d2b23,#1a271f);border:1px solid #35453b}
+body.theme-dark #panel .pd2-pr span{color:#c0dccb}
+body.theme-dark #panel .pd2-tr span{color:#dcd0b7}
+body.theme-dark #panel .pd3-c.no{background:#282622}
+body.theme-dark #panel .pd3-c.yes{background:#1d2b23}
+body.theme-dark #panel .pd3-c.yes b{color:#c0dccb}
+body.theme-dark #panel .pd3-c.tf{background:#272117}
+body.theme-dark #panel .pd3-c.tf b{color:#dcd0b7}
+body.theme-dark #panel .pr-c{background:#272117}
+body.theme-dark #panel .pr-n{color:rgba(223,227,234,0.06)}
+body.theme-dark #panel .pr-c mark{background:linear-gradient(transparent 58%,#293e30 58%,#293e30 92%,transparent 92%)}
+@media (max-width:640px){
+body.theme-dark #panel .pr-c:nth-child(3){background:#272117}
+body.theme-dark #panel .pr-c:nth-child(3) .pr-n{color:rgba(223,227,234,0.06)}
+body.theme-dark #panel .pr-c:nth-child(3) mark{background-image:linear-gradient(transparent 58%,#293e30 58%,#293e30 92%,transparent 92%)}
+}
+body.theme-dark #panel .rs-h span{color:#c0dccb;background:#222b25}
+body.theme-dark #panel .rs-av{background:#1c222f;color:#a6b1ce}
+body.theme-dark #panel .rs-av.sr{background:#222b25;color:#c0dccb}
+body.theme-dark #panel .rs-q blockquote{background:#272117}
+body.theme-dark #panel .dxh-cards div{background:rgba(34,30,26,0.06)}
+body.theme-dark #panel .dxh-cards div:hover{background:rgba(34,30,26,0.1)}
+body.theme-dark #panel .edi{background:#272117}
+body.theme-dark #panel .edi-ic{background:#212326}
+body.theme-dark #panel .edi-line{background:repeating-linear-gradient(90deg,#3c3b38 0 8px,transparent 8px 14px)}
+body.theme-dark #panel .edi-tk{background:#2b1d1c;border:1px solid #473634}
+body.theme-dark #panel .edi-tk span{color:#d6b5b2}
+body.theme-dark #panel .edi-cards div, body.theme-dark #panel .stm-cards div{background:#272117}
+body.theme-dark #panel .edi-cards span, body.theme-dark #panel .stm-cards span{color:#c0dccb}
+body.theme-dark #panel .pd-track{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .pd-track a.done i{color:#dfe4eb}
+body.theme-dark #panel .pd-track a.on{color:#dfe4eb}
+@media (max-width:640px){
+body.theme-dark #panel .edi-line{background:repeating-linear-gradient(180deg,#3c3b38 0 8px,transparent 8px 14px)}
+}
+body.theme-dark #panel .jr-col.bf{background:#262020;border:1px solid #433937}
+body.theme-dark #panel .jr-col.bf h4{color:#d6b5b2}
+body.theme-dark #panel .jr-col li:before{background:#1d1d1d}
+body.theme-dark #panel .jr-col.af li.end b{color:#dfe4eb}
+body.theme-dark #panel .wh-n i{color:#dfe4eb}
+body.theme-dark #panel .tr-c{background:#272117}
+body.theme-dark #panel .tr-img{background:#212326!important}
+body.theme-dark #panel .nb-c{background:#272117;border:1px dashed #403e3b}
+body.theme-dark #panel .nb-x{background:#2b1d1c;color:#d6b5b2}
+body.theme-dark #panel .nb-c b{text-decoration-color:rgba(214,181,178,0.5)}
+body.theme-dark #panel .qt-pains li{background:#272117}
+body.theme-dark #panel .pd-c{background:#272117}
+body.theme-dark #panel .pd-c.chose b{color:#a6b1ce}
+body.theme-dark #panel .pd-c.trade b{color:#dcd0b7}
+body.theme-dark #panel .pd-c.imp b{color:#c0dccb}
+body.theme-dark #panel .pd-c.chose{background:#191e2a;border-color:#343947}
+body.theme-dark #panel .fb-g{background:#272117}
+body.theme-dark #panel .fb-g.liked .fb-wm{color:#bfd9ce}
+body.theme-dark #panel .fb-g.asked .fb-wm{color:#d6c9ae}
+body.theme-dark #panel .fb-g.liked h4{color:#caddd0}
+body.theme-dark #panel .fb-g.asked h4{color:#dcd0b7}
+body.theme-dark #panel .fb-g.suggested h4{color:#beb1d3}
+body.theme-dark #panel .fb-g.liked h4 span{background:#222b25;color:#caddd0}
+body.theme-dark #panel .fb-g.asked h4 span{background:#2f2a1f;color:#dcd0b7}
+body.theme-dark #panel .fb-g.suggested h4 span{background:#201a2c;color:#beb1d3}
+body.theme-dark #panel .fb-ch{background:#454545}
+body.theme-dark #panel .oc-hero{background:#454545}
+body.theme-dark #panel .oc-grow{background:#272117}
+body.theme-dark #panel .oc-bars i{background:#302d29}
+body.theme-dark #panel .oc-stats div{background:#272117}
+body.theme-dark #panel .ds-ba{background:#272117}
+body.theme-dark #panel .ds-flag.no{color:#d6b5b2;background:#2b1d1c}
+body.theme-dark #panel .ds-flag.yes{color:#caddd0;background:#222b25}
+body.theme-dark #panel .ds-arrow{background:#454545}
+body.theme-dark #panel .ds-stats div{background:#454545}
+body.theme-dark #panel .ds-tiers div{background:#272117}
+body.theme-dark #panel .ds-sw i{color:var(--fg,#e7e7e7)}
+body.theme-dark #panel .ds-sw i.a{background:linear-gradient(var(--sw),var(--sw)),repeating-conic-gradient(#2d2d2d 0 25%,#1d1d1d 0 50%) 0 0/10px 10px}
+body.theme-dark #panel .ds-font{background:#454545}
+body.theme-dark #panel .ds-w span{background:#454545}
+body.theme-dark #panel .status.concept{color:#beb1d3;background:#201a2c}
+body.theme-dark #panel .ch-note{background:#211c29;border:1px solid #3a3248;color:#cec7da!important}
+body.theme-dark #panel .dz-chart{background:#272117}
+body.theme-dark #panel .dz-bars i{background:#2d2925}
+body.theme-dark #panel .dz-means{background:#201b29;color:#d2cedb!important}
+body.theme-dark #panel .dz-means b{color:#beb1d3}
+body.theme-dark #panel .dz-persona aside{background:#272117}
+body.theme-dark #panel .dz-persona dd{color:#beb1d3}
+body.theme-dark #panel .dz-traits span{color:#beb1d3;background:#201a2c}
+body.theme-dark #panel .dz-pcols section{background:#272117}
+body.theme-dark #panel .dz-dec{background:#272117}
+body.theme-dark #panel .dz-vs .no{background:#282622}
+body.theme-dark #panel .dz-vs .yes{background:#201a2c}
+body.theme-dark #panel .dz-vs .yes b{color:#beb1d3}
+body.theme-dark #panel .dz-trade b{color:#dcd0b7}
+body.theme-dark #panel .dz-flow li{background:#272117}
+body.theme-dark #panel .dz-flow li.fr{background:#201a2c;border-color:#3a3149}
+body.theme-dark #panel .dz-flow li:not(:last-child):after{background:#30293e}
+body.theme-dark #panel .dz-task{background:#272117;border:1px dashed #3a3447}
+body.theme-dark #panel .dz-probe{background:#201a2c}
+body.theme-dark #panel .dz-probe ul{color:#d2cedb}
+body.theme-dark #panel .dz-imp{background:#272117}
+body.theme-dark #panel .dz-imp .tag{color:#dcd0b7;background:#2f2a1f}
+body.theme-dark #panel .dz-imp .m{color:#d2cedb;background:#201b29}
+body.theme-dark #panel .scr-frame{background:#1d1d1d}
+body.theme-dark #panel .scr-hint{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .au-note{background:#1d1d1d}
+body.theme-dark #panel .av-card{background:linear-gradient(135deg,#202924,#1d2520);border:1.5px solid #38433c}
+body.theme-dark #panel .av-k{color:#c9dfd6}
+body.theme-dark #panel .av-card p{color:#d9e2de!important}
+body.theme-dark #panel .av-card b{color:#dde8e3}
+body.theme-dark #panel .impl-badge{color:#c9dfd6;background:#222a25;border:1.5px solid #38423d}
+body.theme-dark #panel .ap2-trade{background:linear-gradient(135deg,#2d251b,#2f251d);border:1px solid #473d34}
+body.theme-dark #panel .ap2-trade p{color:#e4dcd0!important}
+body.theme-dark #panel .ap-card{background:#454545}
+body.theme-dark #panel .iph{background:linear-gradient(145deg,#4a4550,#444346 40%,#444347)}
+body.theme-dark #panel .iph-screen{background:#202020}
+body.theme-dark #panel .iph.light .iph-status{color:#ebebeb;background:rgba(34,30,26,0.88)}
+body.theme-dark #panel .iph-island{background:#454545}
+body.theme-dark #panel .iph-homebar{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .ap-full:hover{background:rgba(34,30,26,0.1)}
+body.theme-dark #panel .appr-tabs{background:#2b2a27}
+body.theme-dark #panel .appr-tabs button{color:#c5c4c2}
+body.theme-dark #panel .appr-tabs button.on{background:#454545}
+body.theme-dark #panel .st-list div{background:#272117}
+body.theme-dark #panel .zoomable{background:#444248}
+body.theme-dark #panel .zoom-hint{background:rgba(34,30,26,0.92);color:#e8e7e5}
+body.theme-dark #panel #lightbox{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel #lightbox .lb-bar button{background:rgba(34,30,26,0.12)}
+body.theme-dark #panel #lightbox .lb-bar button:hover{background:rgba(34,30,26,0.22)}
+body.theme-dark #panel .is-challenge .st-label em, body.theme-dark #panel .is-challenge .st-label .eyebrow{color:#d1b0ab!important}
+body.theme-dark #panel .ch-block{background:linear-gradient(160deg,#291c18,#2d1f1c);border:1px solid #463734}
+body.theme-dark #panel .ch-tape{background:repeating-linear-gradient(-45deg,#d23a24 0 12px,#291c18 12px 24px)}
+body.theme-dark #panel .ch-h{color:#e0c7c4}
+body.theme-dark #panel .ch-plus{color:#d1b0ab}
+body.theme-dark #panel .ch-card{background:#1d1d1d}
+body.theme-dark #panel .ch-n{color:#d1b0ab}
+body.theme-dark #panel .ch-card b{color:#e8dcdb}
+body.theme-dark #panel .ch-card p{color:#d7cecd!important}
+body.theme-dark #panel .ch-strike{color:#e8dcdb!important}
+body.theme-dark #panel .ch-strike mark{color:#e0c7c4}
+body.theme-dark #panel .ch-body{color:#d7cecd!important}
+body.theme-dark #panel .st-stats div{background:#272117}
+body.theme-dark #panel .facts div{background:#272117}
+body.theme-dark #panel .goals li{background:#272117}
+body.theme-dark #panel .insight{background:#272117}
+body.theme-dark #panel .feature{background:#272117}
+body.theme-dark #panel .next{background:#454545}
+body.theme-dark #panel .nx-go{color:#e9e9e9;background:#1d1d1d}
+body.theme-dark #panel .sample-note{border:1px dashed rgba(255,255,255,0.25)}
+body.theme-dark #panel .msg{background:#1d1d1d}
+body.theme-dark #panel .c-avatar span{color:#bbcabe}
+body.theme-dark #panel .links{background:#1d1d1d}
+body.theme-dark #panel form.cf{background:#1d1d1d}
+body.theme-dark #panel form.cf input, body.theme-dark #panel form.cf textarea{background:#23211d}
+body.theme-dark #panel .cf-result{background:#242722}
+body.theme-dark #panel .r-sec h3:after{background:rgba(255,255,255,0.18)}
+body.theme-dark #panel .skills span{border:1px solid rgba(255,255,255,0.2)}
+body.theme-dark #panel .bar div{background:rgba(255,255,255,0.13)}
+body.theme-dark #panel .t-sage{background:#2a2d27}
+body.theme-dark #panel .t-sand{background:#302c25}
+body.theme-dark #panel .t-sky{background:#26292b}
+body.theme-dark #panel .t-blush{background:#2e2623}
+body.theme-dark #panel .t-sage:active{background:#30332d}
+body.theme-dark #panel .t-sand:active{background:#36312a}
+body.theme-dark #panel .t-sky:active{background:#2b2f31}
+body.theme-dark #panel .t-blush:active{background:#352c28}
+body.theme-dark #panel .clickfx.light s{background:#2d2c2a}
 </style>
 <script>
 (function () {
@@ -1685,7 +1961,7 @@ body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
 <header class="topbar">
   <div class="navbar">
     <button class="logo" id="logo" aria-label="Paridhi — back to the room"><span class="mark" title="Available — online"><img src="media/paridhi.jpg" alt=""></span><span class="word"><b>Paridhi</b><small>UX &amp; Product Designer</small></span></button>
-    <nav class="nav" aria-label="Sections"><button data-visit="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>About</span></button><button data-visit="laptop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span>Work</span></button><button data-visit="notebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M6 3v18M10 8h5M10 12h5"/></svg><span>Journey</span></button><a class="navlink" href="https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link" target="_blank" rel="noopener" data-ext title="Open my resume (PDF) in a new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Resume</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></a><button data-visit="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg><span>Contact</span></button><button class="tour" data-tour><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span>Take a tour</span></button></nav>
+    <nav class="nav" aria-label="Sections"><button data-visit="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>About</span></button><button data-visit="laptop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span>Work</span></button><button data-visit="notebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M6 3v18M10 8h5M10 12h5"/></svg><span>Journey</span></button><a class="navlink" href="https://drive.google.com/file/d/1q9rUNsioIw502PTSTCHYx37Nb5p8hsEb/view?usp=drive_link" target="_blank" rel="noopener" data-ext title="Open my resume (PDF) in a new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Resume</span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></a><button data-visit="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg><span>Contact</span></button><button class="tour" data-tour><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span>Take a tour</span></button></nav>
     <div class="tools">
       <button class="icon-btn" id="photoBtn" title="Photo mode — save a picture of the room" aria-label="Photo mode: save a picture of the room"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg></button>
       <button class="icon-btn" id="soundBtn" aria-pressed="true" title="Sound on — click to mute" aria-label="Click sounds on"></button>
@@ -1693,7 +1969,7 @@ body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span class="box"><span class="ln"></span><span class="ln"></span><span class="ln"></span></span></button>
     </div>
   </div>
-  <nav class="mmenu" id="mmenu" aria-label="Menu"><button data-visit="about"><b>About</b></button><button data-visit="laptop"><b>Work</b></button><button data-visit="notebook"><b>Journey</b></button><a href="https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link" target="_blank" rel="noopener" data-ext><b>Resume</b><span class="arrow"><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></span></a><button data-visit="phone"><b>Contact</b></button><button class="tour" data-tour><b>Take a tour</b></button></nav>
+  <nav class="mmenu" id="mmenu" aria-label="Menu"><button data-visit="about"><b>About</b></button><button data-visit="laptop"><b>Work</b></button><button data-visit="notebook"><b>Journey</b></button><a href="https://drive.google.com/file/d/1q9rUNsioIw502PTSTCHYx37Nb5p8hsEb/view?usp=drive_link" target="_blank" rel="noopener" data-ext><b>Resume</b><span class="arrow"><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg></span></a><button data-visit="phone"><b>Contact</b></button><button class="tour" data-tour><b>Take a tour</b></button></nav>
 </header>
 
 <main id="home2d" aria-label="Paridhi — portfolio">
@@ -1709,7 +1985,7 @@ body.room2d.h2-dark .menu-btn .ln{background:#f3eee6}
   <p class="h2-p">I turn messy problems into simple, usable products, from research to design decisions to shipped screens.</p>
   <div class="h2-list">
     <button class="h2-feat" data-visit="laptop"><span class="tx"><small>3 projects</small><b>Case studies</b><em>Trilyt · District · Decix Lab</em></span>
-      <span class="fan"><img src="media/decix/cover.jpg" alt=""><img src="media/district/cover.jpg" alt=""><img src="media/trilyt-cover.jpg" alt=""></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
+      <span class="fan"><img src="media/decix-cover.jpg" alt=""><img src="media/district-cover.jpg" alt=""><img src="media/trilyt-cover.jpg" alt=""></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
     <div class="h2-grid">
       <button class="h2-tile t-sage" data-visit="about"><span class="ic av"><img src="media/paridhi.jpg" alt=""></span><b>About me</b><small>How I work</small><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
       <button class="h2-tile t-sand" data-visit="notebook"><span class="ic col"><svg viewBox="0 0 48 48"><rect x="9" y="7" width="27" height="34" rx="4" fill="#5f7356"/><rect x="13" y="7" width="23" height="34" rx="3" fill="#7b8f6e"/><rect x="17" y="13" width="14" height="3" rx="1.5" fill="#f3eee6"/><rect x="17" y="19" width="10" height="2.5" rx="1.25" fill="#dfe7d6"/><path d="M29 7h5v12l-2.5-2-2.5 2z" fill="#e0794f"/><rect x="33" y="22" width="5" height="21" rx="2" transform="rotate(28 35.5 32.5)" fill="#f2b84b"/><path d="M38.3 40.6l-2.6 4.8-.6-5.4z" fill="#2a231d"/></svg></span><b>Journey</b><small>Experience &amp; education</small><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></button>
@@ -1759,7 +2035,7 @@ const SITE = {
   // using the email above, paste it here, and host the site anywhere (Netlify, Vercel, GitHub Pages…).
   web3formsKey: '31a35a79-99e1-401e-94a5-3f5abbb85f1b',
   linkedin: 'https://www.linkedin.com/in/paridhi-karmwar',
-  resumePdf: 'https://drive.google.com/file/d/1UZA5A-CwqS12glxMLz3Ru7xuBNjNOtzd/view?usp=drive_link', // Resume buttons open this
+  resumePdf: 'https://drive.google.com/file/d/1q9rUNsioIw502PTSTCHYx37Nb5p8hsEb/view?usp=drive_link', // Resume buttons open this
   logos: { email: '', linkedin: '' }, // e.g. 'media/tools/gmail.png' — shown in the chat's links card
   status: 'Open to Product Designer, UX Designer and UI/UX Designer roles',
 };
@@ -2038,7 +2314,7 @@ const CASES = [
     tagline: 'A concept for planning group dinners: shortlist, vote, and book in one place.',
     status: 'Self-initiated concept', statusKind: 'concept',
     headline: 'District — Helping Friends Decide Where to Eat, Together',
-    cover: 'media/district/cover.jpg', coverBg: '#4a1a7a',
+    cover: 'media/district-cover.jpg', coverBg: '#4a1a7a',
     note: 'A self-initiated portfolio project. This is an idea I explored on my own. It was not shipped, and it isn’t affiliated with District or Zomato.',
     anim: 'media/case-3.webp', video: 'media/case-3.mp4', poster: 'media/case-3.jpg',
     marquee: ['Dining', 'District app'],
@@ -2205,7 +2481,7 @@ const CASES = [
     note: 'A self-initiated portfolio project. Decix Lab is a concept I designed on my own to explore AI in enterprise support. It is not a real product or company.',
     headline: 'Decix Lab — An AI-powered EDI Support Platform',
     tagline: 'Turning repetitive support tickets into reusable team knowledge with AI.',
-    cover: 'media/decix/cover.jpg', coverBg: '#14213d',
+    cover: 'media/decix-cover.jpg', coverBg: '#14213d',
     anim: 'media/case-2.webp', video: 'media/case-2.mp4', poster: 'media/case-2.jpg',
     marquee: ['Decix Lab', 'EDI'],
     facts: [['Role', 'Product Designer'], ['Timeline', '3 weeks'], ['Tools', 'Figma, Claude, Notion'], ['Product', 'B2B SaaS']],
@@ -3744,9 +4020,11 @@ function updateJourney() {
   const vp = pBody.getBoundingClientRect(), mark = vp.top + vp.height * .62;
   const atEnd = pBody.scrollTop + pBody.clientHeight >= pBody.scrollHeight - 4;
   rows.forEach((row, i) => {
-    const yr = row.querySelector('.jr-yr').getBoundingClientRect();
+    const yrEl = row.querySelector('.jr-yr'), ln = row.querySelector('.jr-line');
+    if (!yrEl || !ln) return; // other sections reuse the .jr class (e.g. Decix Lab's journey comparison)
+    const yr = yrEl.getBoundingClientRect();
     row.classList.toggle('on', reduceMotion || atEnd || yr.top < mark || i === 0);
-    const ln = row.querySelector('.jr-line'), lr = ln.getBoundingClientRect();
+    const lr = ln.getBoundingClientRect();
     const f = reduceMotion || atEnd ? 1 : clamp((mark - lr.top) / Math.max(lr.height, 1), 0, 1);
     ln.style.setProperty('--f', f.toFixed(3));
   });
@@ -4055,7 +4333,7 @@ const hr = new Date().getHours();
 let nightT = (hr >= 19 || hr < 6) ? 1 : 0, night = nightT;
 const dn = $('#dayNight');
 const setDNIcon = () => { dn.innerHTML = nightT ? SUN_ICON : MOON_ICON; dn.title = nightT ? 'Switch to day' : 'Switch to night'; };
-dn.addEventListener('click', () => { nightT = nightT ? 0 : 1; setDNIcon(); document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT); if (ROOM2D) { document.body.classList.toggle('h2-dark', !!nightT); try { localStorage.setItem('h2-theme', nightT ? 'dark' : 'light'); } catch (e) { } } });
+dn.addEventListener('click', () => { nightT = nightT ? 0 : 1; setDNIcon(); document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT); document.body.classList.toggle('theme-dark', !!nightT); if (ROOM2D) { document.body.classList.toggle('h2-dark', !!nightT); try { localStorage.setItem('h2-theme', nightT ? 'dark' : 'light'); } catch (e) { } } });
 if (ROOM2D) { // phones: remember the visitor's choice, otherwise follow their phone's own light/dark setting
   let pref = null; try { pref = localStorage.getItem('h2-theme'); } catch (e) { }
   nightT = pref ? (pref === 'dark' ? 1 : 0) : (matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0);
@@ -4063,6 +4341,7 @@ if (ROOM2D) { // phones: remember the visitor's choice, otherwise follow their p
 }
 setDNIcon();
 document.body.classList.toggle('ui-dark', !ROOM2D && !!nightT);
+document.body.classList.toggle('theme-dark', !!nightT);
 
 /* hotspots */
 const EXT_SVG = '<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></svg>';
@@ -4121,7 +4400,8 @@ $('#pCopy').addEventListener('click', async e => {
 
 function routeHash() {
   if (suppressHash) { suppressHash = false; return; }
-  const h = decodeURIComponent(location.hash.slice(1));
+  let h = decodeURIComponent(location.hash.slice(1));
+  if (h === 'case-decix' || h === 'case-decixlab') h = 'case-medislot'; // friendly link for Decix Lab
   if (h === 'photo') { enterPhoto(); return; }
   if (document.body.classList.contains('photo')) exitPhoto();
   if (!h) { if (panelKey) closePanel(); return; }
